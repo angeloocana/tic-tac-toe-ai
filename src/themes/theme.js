@@ -77,7 +77,7 @@ const theme = {
     },
     isHome: {
       title: {
-        fontSize: scale(7),
+        fontSize: scale(4),
         textAlign: 'center',
         padding: `${scale(2)} 0 0 0`,
         margin: `${scale(0)} 0 ${scale(4)} 0`,
@@ -118,28 +118,6 @@ const theme = {
       marginLeft: scale(7.8)
     }
   },
-  socialLinks: {
-    margin: `0 ${scale(0)}`,
-    padding: 0,
-    a: {
-      color: colors.white,
-      fontSize: scale(-1),
-      margin: 0,
-      padding: `${scale(0)} ${scale(0)} 0 ${scale(0)}`,
-      svg: {
-        fontSize: scale(5),
-        margin: `0 auto ${scale(-4)} auto`,
-        padding: 0,
-      },
-      hover: {
-        color: colors.yellow
-      }
-    }
-  },
-  welcome: {
-    marginTop: scale(6),
-    marginBottom: scale(2),
-  },
   h1: {
     fontSize: scale(6),
     padding: `${scale(1)} 0 0 0`,
@@ -151,109 +129,6 @@ const theme = {
     padding: `${scale(1)} 0 0 0`,
     margin: `${scale(4)} 0 0 0`,
     textAlign: 'center'
-  },
-  blog: {
-    list: {
-      header: {
-        fontSize: scale(6),
-        padding: `${scale(1)} 0 0 0`,
-        margin: `${scale(4)} 0 0 0`,
-      },
-      ul: {
-        padding: `0`,
-        margin: `0`,
-      },
-      item: {
-        padding: scale(2),
-        margin: `0 -${scaleN(2)}rem`,
-        hover: {
-          backgroundColor: colors.blackShades[0]
-        },
-        header: {
-          fontSize: scale(3),
-          lineHeight: scaleN(1),
-          time: {
-            fontSize: scale(0),
-            color: colors.blue
-          }
-        },
-        p: {
-          fontSize: scale(1),
-          lineHeight: scaleN(2),
-          padding: `0`,
-          margin: `0`,
-        }
-      }
-    },
-    post: {
-      padding: 0,
-      margin: `0 0 ${scale(4)} 0`,
-      header: {
-        fontSize: scale(5),
-        time: {
-          fontSize: scale(0),
-          color: colors.blue
-        }
-      },
-      content: {
-        code: {
-          color: colors.yellow,
-          fontSize: scale(1)
-        },
-        highlight: {
-          backgroundColor: colors.gray,
-          borderRadius: '0.2rem',
-          margin: `${scale(0)} 0`,
-          padding: `${scale(0)}`,
-          code: {
-            color: colors.white
-          }
-        },
-        a: {
-          color: colors.yellow
-        },
-        h1: {
-          fontSize: scale(4),
-          margin: 0,
-          padding: `${scale(4)} 0 0 0`
-        },
-        h2: {
-          fontSize: scale(3),
-          margin: 0,
-          padding: `${scale(3)} 0 0 0`
-        },
-        h3: {
-          fontSize: scale(2),
-          margin: 0,
-          padding: `${scale(2)} 0 0 0`
-        },
-        h4: {
-          fontSize: scale(1),
-          margin: 0,
-          padding: `${scale(1)} 0 0 0`
-        },
-        h5: {
-          fontSize: scale(0),
-          margin: 0,
-          padding: `${scale(0)} 0 0 0`
-        },
-        h6: {
-          fontSize: scale(-1),
-          margin: 0,
-          padding: `${scale(0)} 0 0 0`
-        },
-        p: {
-          fontSize: scale(1),
-          margin: 0,
-          padding: `${scale(0)} 0 0 0`
-        },
-        ul: {
-          fontSize: scale(1),
-          margin: 0,
-          padding: `${scale(0)}`
-        }
-      }
-    }
   },
   i18n: {
     selectLanguage: {
