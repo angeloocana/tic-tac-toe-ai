@@ -54,8 +54,11 @@ const Wrapper = styled.ul`
   height: 20rem;
   max-width: 20rem;
   max-height: 20rem;
-  margin: auto;
-  justify-content: center;
+  margin-top: 0;
+  margin-bottom: ${({theme}) => theme.scale(4)};
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;  
 `;
 
 const mapBoard = map(value => (<BoardPosition value={value} />));
