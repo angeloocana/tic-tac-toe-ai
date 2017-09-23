@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 import graphql from 'graphql';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -117,7 +119,15 @@ Wrapper.propTypes = {
   data: PropTypes.object.isRequired
 };
 
-export default Wrapper;
+const Layout = (props) => {
+  return (
+    <Provider store={store}>
+      <Wrapper {...props} />
+    </Provider>
+  );
+};
+
+export default Layout;
 
 export const pageQuery = graphql`
   query Layout {

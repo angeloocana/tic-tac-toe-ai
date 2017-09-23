@@ -8,6 +8,8 @@
     "gatsby-link": "^1.6.5",
     "gatsby-plugin-react-helmet": "^1.0.1",
     "gatsby-plugin-styled-components": "^1.0.4",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "synaptic": "^1.1.2"
   },
   "keywords": [

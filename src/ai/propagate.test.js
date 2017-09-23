@@ -12,6 +12,8 @@ import {
   initialBoard
 } from './constants';
 import { move } from './move';
+import { getNewValue } from './getNewValue';
+import {getPositionIndex} from './getPositionIndex';
 import { printBoard } from './printBoard';
 
 const learningRates = {
@@ -21,13 +23,15 @@ const learningRates = {
   lost: 0.3
 };
 
-const moveAndPropagate = (net, board, value) => {
+const moveAndPropagate = (net, board) => {
   printBoard('old board: ', board);
 
   const output = net.activate(board);
   console.log('output: ', output);
 
-  const newBoard = move(board, output, value);
+  const index = getPositionIndex(output);
+  const value = getNewValue(board);
+  const newBoard = move(board, index, value);
   console.log('newBoard: ', newBoard);
   printBoard('new board: ', newBoard);
 
@@ -52,7 +56,7 @@ const moveAndPropagate = (net, board, value) => {
 };
 
 describe('tic tac toe propagate', () => {
-  it('tic tac toe', () => {
+  it.skip('tic tac toe', () => {
     const netX = getNetwork();
     // const netO = getNetwork();
 
