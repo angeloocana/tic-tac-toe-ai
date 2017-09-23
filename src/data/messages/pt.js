@@ -3,6 +3,8 @@ module.exports = {
   'header.title': 'Jogo da Velha IA',
   'header.subTitle': `Redes neurais aprendendo à jogar`,
 
+  'author': 'Autor',
+
   'home': 'Início',
   
   'selectLanguage': 'Selecione o seu idioma',

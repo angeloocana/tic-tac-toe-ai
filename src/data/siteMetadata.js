@@ -11,7 +11,7 @@ module.exports = {
   sourceCodeLink: 'https://github.com/angeloocana/tic-tac-toe-ai',
   menu: [
     {label: 'home', slug: '/'},
-    {label: 'author', slug: 'https://angeloocana.com'},
+    {label: 'author', link: 'https://angeloocana.com'},
     {label: 'sourceCode', link: 'https://github.com/angeloocana/tic-tac-toe-ai'}
   ],  
   languages
