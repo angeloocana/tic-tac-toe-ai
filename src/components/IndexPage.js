@@ -1,11 +1,10 @@
 import React from 'react';
+import Game from './Game';
 // import PropTypes from 'prop-types';
 
 const Index = (props) => {
   return (
-    <div>
-      Hi!
-    </div>
+    <Game />
   );
 };
 
