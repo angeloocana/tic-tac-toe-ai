@@ -23,7 +23,7 @@ const Board = (props) => {
       key={index}
       index={index}
       value={value}
-      onClick={props.onClick}
+      selectPosition={props.selectPosition}
     />
   ));
 
@@ -36,7 +36,7 @@ const Board = (props) => {
 
 Board.propTypes = {
   board: PropTypes.array.isRequired,
-  onClick: PropTypes.func.isRequired
+  selectPosition: PropTypes.func.isRequired
 };
 
 export default Board;

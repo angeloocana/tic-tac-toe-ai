@@ -1,6 +1,6 @@
 const actions = {
   NEW_GAME: 'NEW_GAME',
-  ON_CLICK: 'ON_CLICK'
+  SELECT_POSITION: 'SELECT_POSITION'
 };
 
 /**
@@ -16,13 +16,13 @@ const newGame = (gameType) => {
 };
 
 /**
- * Create onClick action.
+ * Create selectPosition action.
  * @param {*} index board index
- * @returns {Action} onClick action
+ * @returns {Action} selectPosition action
  */
-const onClick = (index) => {
+const selectPosition = (index) => {
   return {
-    type: actions.ON_CLICK,
+    type: actions.SELECT_POSITION,
     index
   };
 };
@@ -30,5 +30,5 @@ const onClick = (index) => {
 export {
   actions,
   newGame,
-  onClick
+  selectPosition
 };

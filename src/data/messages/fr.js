@@ -9,5 +9,7 @@ module.exports = {
 
   'selectLanguage': 'choisissez votre langue',
 
-  'sourceCode': 'Code source'
+  'sourceCode': 'Code source',
+
+  'newGame': 'Nouveau Jeu'
 };

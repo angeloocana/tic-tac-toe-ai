@@ -12,10 +12,12 @@ const getBoardAfterMove = (oldBoard, index) => {
 };
 
 const board = (state, action) => {
+  console.log('action: ', action);
+
   switch (action.type) {
     case actions.NEW_GAME:
       return initialBoard;
-    case actions.ON_CLICK:
+    case actions.SELECT_POSITION:
       return getBoardAfterMove(state, action.index);
     default:
       return state || initialBoard;

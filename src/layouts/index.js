@@ -73,8 +73,6 @@ const Wrapper = (props) => {
   const url = location.pathname;  
   const isHome = isHomePage(url);
 
-  console.log('props: ', props);
-
   const {langs, defaultLangKey} = props.data.site.siteMetadata.languages;
   const langKey = getCurrentLangKey(langs, defaultLangKey, url);
 

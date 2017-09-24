@@ -45,12 +45,10 @@ const Li = styled.li`
 class BoardPosition extends React.PureComponent {
 
   onClick = (e) => {
-    console.log(e);
-    this.props.onClick(this.props.index);
+    this.props.selectPosition(this.props.index);
   }
 
   render() {
-    console.log(this.props);
     const { value } = this.props;
 
     return (
@@ -63,7 +61,7 @@ class BoardPosition extends React.PureComponent {
 
 BoardPosition.propTypes = {
   value: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
+  selectPosition: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired
 };
 

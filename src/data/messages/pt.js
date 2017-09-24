@@ -6,8 +6,10 @@ module.exports = {
   'author': 'Autor',
 
   'home': 'Início',
-  
+
   'selectLanguage': 'Selecione o seu idioma',
 
-  'sourceCode': 'Código fonte'
+  'sourceCode': 'Código fonte',
+
+  'newGame': 'Novo Jogo'
 };
