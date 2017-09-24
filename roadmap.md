@@ -1,11 +1,17 @@
 # RoadMap
 
 ## To do
-- Create UI to play
-- Create favicon
+- Create favicon.
+- draw X and O.
+- Animate lines creation.
+- Animate X and O creation.
+
 
 ## Working
-- Create gatsby project
+- Create clickable squares.
+
 
 ## Done
-
+- Draw lines.
+- Create UI to play.
+- Create gatsby project.
