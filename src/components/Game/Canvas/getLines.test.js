@@ -10,7 +10,9 @@ describe('getLines', () => {
       [[0, 60], [90, 60]]
     ];
 
-    const lines = getLines();
+    const size = { clientHeight: 90, clientWidth: 90 };
+
+    const lines = getLines(size);
 
     assert.deepEqual(lines, expectedLines);
   });
