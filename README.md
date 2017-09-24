@@ -7,6 +7,7 @@
 [![bitHound Score](https://www.bithound.io/github/gotwarlost/istanbul/badges/score.svg)](https://www.bithound.io/github/angeloocana/tic-tac-toe-ai)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
+Play => http://tic-tac-toe-ai.surge.sh/
 
 # Built with
 
