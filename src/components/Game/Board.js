@@ -16,7 +16,7 @@ const Ul = styled.ul`
 `;
 
 const Board = (props) => {
-  const board = props.board.map((value, index) => (    
+  const board = props.board.map((value, index) => (
     <BoardPosition
       key={index}
       index={index}
@@ -26,9 +26,11 @@ const Board = (props) => {
   ));
 
   return (
-    <Ul>
-      {board}
-    </Ul>
+    <div style={{ width: '100%', height: '20rem', display: 'block' }}>
+      <Ul>
+        {board}
+      </Ul>
+    </div>
   );
 };
 

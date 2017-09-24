@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { newGame, selectPosition } from '../../redux/actions';
 import NewGameBtn from './NewGameBtn';
 import styled from 'styled-components';
+import CanvasTest from './CanvasTest';
 
 const Section = styled.section`
   display: flex;
@@ -12,9 +13,7 @@ const Section = styled.section`
   margin: auto;
 
   width: 100%;
-  height: 20rem;
   max-width: 20rem;
-  max-height: 20rem;
 
   text-align: center;
 `;
@@ -26,6 +25,7 @@ class Game extends React.PureComponent {
 
     return (
       <Section>
+        <CanvasTest />
         <div>
           <NewGameBtn newGame={this.props.newGame} />
         </div>
