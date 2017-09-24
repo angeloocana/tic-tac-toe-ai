@@ -24,7 +24,6 @@ const Li = styled.li`
   justify-content: center;
   align-items: center;
   
-  
   &:nth-child(1), &:nth-child(2), &:nth-child(4), &:nth-child(5){
     border-right: 0.1rem solid ${({ theme }) => theme.colors.white};
     border-bottom: 0.1rem solid ${({ theme }) => theme.colors.white};
