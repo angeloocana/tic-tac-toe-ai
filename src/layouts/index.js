@@ -7,9 +7,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../themes/theme';
-import {getMessages} from '../data/messages';
+import { getMessages } from '../data/messages';
 
-import {addLocaleData, IntlProvider} from 'react-intl';
+import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 import pt from 'react-intl/locale-data/pt';
@@ -69,22 +69,22 @@ const BodyContainer = styled.div`
 `;
 
 const Wrapper = (props) => {
-  const { children, location } = props;  
-  const url = location.pathname;  
+  const { children, location } = props;
+  const url = location.pathname;
   const isHome = isHomePage(url);
 
-  const {langs, defaultLangKey} = props.data.site.siteMetadata.languages;
+  const { langs, defaultLangKey } = props.data.site.siteMetadata.languages;
   const langKey = getCurrentLangKey(langs, defaultLangKey, url);
-
+  
   const homeLink = `/${langKey}/`;
   const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url));
 
-  const {menu, author, sourceCodeLink} = props.data.site.siteMetadata;
+  const { menu, author, sourceCodeLink } = props.data.site.siteMetadata;
 
   return (
     <ThemeProvider theme={theme}>
-      <IntlProvider 
-        locale={langKey} 
+      <IntlProvider
+        locale={langKey}
         messages={getMessages(langKey)}
       >
         <Background>
@@ -94,7 +94,7 @@ const Wrapper = (props) => {
               langs={langsMenu}
               homeLink={homeLink}
               url={url}
-              menu={menu}    
+              menu={menu}
             />
             <main>
               {children()}
@@ -117,10 +117,12 @@ Wrapper.propTypes = {
   data: PropTypes.object.isRequired
 };
 
-const Layout = (props) => {
+const Layout = (props, context, c) => {
+  const { location } = context.router.route;
+
   return (
     <Provider store={store}>
-      <Wrapper {...props} />
+      <Wrapper {...props} location={location} />
     </Provider>
   );
 };

@@ -10,6 +10,7 @@ module.exports = {
   'selectLanguage': 'Elige tu idioma',
 
   'sourceCode': 'Código Fuente',
+  'openSource': 'Fuente Abierta',
 
   'newGame': 'Nuevo Juego'
 };

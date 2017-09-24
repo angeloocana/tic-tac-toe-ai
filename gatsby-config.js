@@ -67,8 +67,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-i18n',
       options: {
-        postPage: null,
-        query: null,
         langKeyForNull: 'any',
         langKeyDefault: 'en'
       }

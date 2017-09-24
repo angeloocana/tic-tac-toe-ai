@@ -19,7 +19,7 @@ const Btn = styled.button`
   margin-top: ${props => props.theme.scale(-1)};
   margin-left: 0;
   margin-bottom: ${props => props.theme.scale(0)};
-  margin-right: ${props => props.theme.scale(0)};
+  margin-right: 0;
 
   &:hover {
       color: ${props => props.theme.colors.white};

@@ -6,14 +6,15 @@ import FaGithub from 'react-icons/lib/fa/github';
 import A from './A';
 import styled from 'styled-components';
 import Ca from './flags/Ca';
+import {FormattedMessage} from 'react-intl';
 
 const Link = styled(A)`
   display: inline-block;
 
-  padding-top: ${({theme}) => theme.scale(6)};
-  padding-bottom: ${({theme}) => theme.scale(7)};
-  padding-right: ${({theme}) => theme.scale(0)};
-  padding-left: ${({theme}) => theme.scale(0)};
+  padding-top: ${({ theme }) => theme.scale(6)};
+  padding-bottom: ${({ theme }) => theme.scale(7)};
+  padding-right: ${({ theme }) => theme.scale(0)};
+  padding-left: ${({ theme }) => theme.scale(0)};
   margin: 0;
 
   line-height: 1.5;
@@ -56,29 +57,6 @@ const HomeCountryIcon = styled(Ca)`
   margin-left: ${({ theme }) => theme.scale(-6)};
 `;
 
-const getGitHubMsg = () => {
-  return {
-    en: (
-      <p>
-        <GithubIcon />
-        <span>OPEN SOURCE</span>!
-      </p>
-    ),
-    pt: (
-      <p>
-        <GithubIcon />
-        <span>OPEN SOURCE</span>!
-      </p>
-    ),
-    fr: (
-      <p>
-        <GithubIcon />
-        <span>SOURCE OUVERTE</span>!
-      </p>
-    )
-  };
-};
-
 const getCreatedBy = (author) => {
   const profilePicture = (<ProfilePicture email={author.email} alt={author.name} width={60} height={60} />);
   return {
@@ -104,6 +82,17 @@ const getCreatedBy = (author) => {
         </Link>
       </FooterSection>
     ),
+    es: (
+      <FooterSection>
+        <Link href={author.defaultLink} target="_blank">
+          {profilePicture}
+          {'Creado con '} <HeartIcon />
+          {' por '} <span>{author.name}</span>
+          {' que vive en '} <span>{author.homeCity}</span>
+          <HomeCountryIcon />
+        </Link>
+      </FooterSection>
+    ),
     fr: (
       <FooterSection>
         <Link href={author.defaultLink} target="_blank">
@@ -124,7 +113,10 @@ const Footer = ({ author, sourceCodeLink, currentLangKey }) => {
       {getCreatedBy(author)[currentLangKey]}
       <FooterSection>
         <Link href={sourceCodeLink} target="_blank">
-          {getGitHubMsg()[currentLangKey]}
+          <p>
+            <GithubIcon />
+            <FormattedMessage id="sourceCode" />
+          </p>
         </Link>
       </FooterSection>
     </footer>

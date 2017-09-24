@@ -7,8 +7,6 @@ import Icon from 'react-icons/lib/fa/play';
 class NewGameBtn extends React.PureComponent {
 
   handleClick = (e) => {
-    console.log('e:', e);
-    console.log('this.props.newGame:', this.props.newGame);
     this.props.newGame(null);
   }
 

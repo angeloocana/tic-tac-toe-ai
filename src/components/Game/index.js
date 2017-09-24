@@ -8,8 +8,15 @@ import styled from 'styled-components';
 
 const Section = styled.section`
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  margin: auto;
+
+  width: 100%;
+  height: 20rem;
+  max-width: 20rem;
+  max-height: 20rem;
+
+  text-align: center;
 `;
 
 class Game extends React.PureComponent {
@@ -19,7 +26,9 @@ class Game extends React.PureComponent {
 
     return (
       <Section>
-        <NewGameBtn newGame={this.props.newGame} />
+        <div>
+          <NewGameBtn newGame={this.props.newGame} />
+        </div>
         <Board
           board={board}
           selectPosition={selectPosition}

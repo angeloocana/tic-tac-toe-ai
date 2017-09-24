@@ -12,8 +12,6 @@ const getBoardAfterMove = (oldBoard, index) => {
 };
 
 const board = (state, action) => {
-  console.log('action: ', action);
-
   switch (action.type) {
     case actions.NEW_GAME:
       return initialBoard;
