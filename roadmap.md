@@ -13,6 +13,7 @@
 
 ## Working
 - Create clickable squares.
+- Add memoize.
 
 
 ## Done
