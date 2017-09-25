@@ -1,7 +1,7 @@
-import { getLines } from './getLines';
+import { getBoardLines } from './getBoardLines';
 import * as assert from 'ptz-assert';
 
-describe('getLines', () => {
+describe('getBoardLines', () => {
   it('90x90', () => {
     const expectedLines = [
       [[30, 0], [30, 90]],
@@ -12,7 +12,7 @@ describe('getLines', () => {
 
     const size = { clientHeight: 90, clientWidth: 90 };
 
-    const lines = getLines(size);
+    const lines = getBoardLines(size);
 
     assert.deepEqual(lines, expectedLines);
   });
