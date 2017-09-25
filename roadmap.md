@@ -8,12 +8,15 @@
 - New layout.
 - AI.
 - Add memoize.
+- Draw win line.
+
 
 ## Working
 - Create clickable squares.
-- Animate O creation.
+
 
 ## Done
+- Animate O creation.
 - Animate X creation.
 - draw X and O.
 - Animate lines creation.
