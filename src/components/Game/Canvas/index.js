@@ -3,6 +3,7 @@ import theme from '../../../themes/theme';
 import raf from 'raf';
 import { drawBoardLinesWithAnimation } from './drawBoardLines';
 import { drawXWithAnimation } from './drawX';
+import { drawArc } from './drawArc';
 
 class CanvasTest extends React.PureComponent {
 
@@ -19,6 +20,7 @@ class CanvasTest extends React.PureComponent {
 
     drawBoardLinesWithAnimation(linesTheme, ctx, raf);
     drawXWithAnimation(linesTheme, ctx, raf)([0, 0]);
+    drawArc(linesTheme, ctx)([100, 35, 20, 0, 1.8 * Math.PI]);
   }
 
   render() {
