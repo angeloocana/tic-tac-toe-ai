@@ -4,8 +4,8 @@ import * as assert from 'ptz-assert';
 describe('getX', () => {
   it('getXFor00', () => {
     const expectedLines = [
-      [[0, 0], [30, 30]],
-      [[0, 30], [30, 0]]
+      [[6, 6], [24, 24]], 
+      [[6, 24], [24, 6]]      
     ];
 
     const size = { clientHeight: 90, clientWidth: 90 };
@@ -30,8 +30,8 @@ describe('getX', () => {
 
   it('getX for x:30, y:30', () => {
     const expectedLines = [
-      [[30, 30], [60, 60]],
-      [[30, 60], [60, 30]]
+      [[36, 36], [54, 54]], 
+      [[36, 54], [54, 36]]      
     ];
 
     const size = { clientHeight: 90, clientWidth: 90 };
@@ -43,8 +43,8 @@ describe('getX', () => {
 
   it('getX for x:0, y:30', () => {
     const expectedLines = [
-      [[0, 30], [30, 60]],
-      [[0, 60], [30, 30]]
+      [[6, 36], [24, 54]],
+      [[6, 54], [24, 36]]
     ];
 
     const size = { clientHeight: 90, clientWidth: 90 };
