@@ -6,7 +6,7 @@ module.exports = {
     name: 'Ângelo Ocanã',
     homeCity: 'Ottawa',
     email: 'angeloocana@gmail.com',
-    defaultLink: 'https://github.com/angeloocana'
+    defaultLink: 'https://angeloocana.com'
   },
   sourceCodeLink: 'https://github.com/angeloocana/tic-tac-toe-ai',
   menu: [
