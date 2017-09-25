@@ -19,7 +19,7 @@ describe('getLineFrames', () => {
       [[0, 90], [0, 100]]
     ];
 
-    const lines = getLineFrames(line, percentageByFrame);
+    const lines = getLineFrames(percentageByFrame, line);
 
     assert.deepEqual(lines, expectedLines);
   });

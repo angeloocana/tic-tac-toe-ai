@@ -1,3 +1,5 @@
+import { curry } from 'ramda';
+
 /**
  * Get line middle point by percentage
  * @param {*} p1 from
@@ -9,11 +11,11 @@ const getLineMidPoint = (p1, p2) => (per) =>
 
 /**
  * Split line into small lines to draw by frame
- * @param {*} line [[x,y],[x,y]]
  * @param {*} percentageByFrame percentage of the line to draw by frame
+ * @param {*} line [[x,y],[x,y]] 
  * @return {[[[Number]]]} line chunks
  */
-const getLineFrames = (line, percentageByFrame) => {
+const getLineFrames = curry((percentageByFrame, line) => {
   let lineFrames = [];
   let previousPoint = line[0];
 
@@ -36,7 +38,7 @@ const getLineFrames = (line, percentageByFrame) => {
   lineFrames.push(lastLine);
 
   return lineFrames;
-};
+});
 
 export {
   getLineMidPoint,
