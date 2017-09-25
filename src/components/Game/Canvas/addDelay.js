@@ -1,5 +1,10 @@
 import { range } from 'ramda';
 
+/**
+ * Get list of nulls
+ * @param {Number} nFrames number of frames
+ * @return {[null]} array of nulls
+ */
 const getNulls = (nFrames) => range(0, nFrames).map(_ => null);
 
 /**
