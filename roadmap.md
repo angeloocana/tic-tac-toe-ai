@@ -1,22 +1,21 @@
 # RoadMap
 
 ## To do
-- draw X and O.
-- Animate X and O creation.
 - Create favicon.
 - Add google analytics.
 - Fix codecov.
 - Add documentation.
 - New layout.
 - AI.
-
+- Add memoize.
 
 ## Working
 - Create clickable squares.
-- Add memoize.
-
+- Animate O creation.
 
 ## Done
+- Animate X creation.
+- draw X and O.
 - Animate lines creation.
 - Draw lines.
 - Create UI to play.
