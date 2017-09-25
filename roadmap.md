@@ -10,6 +10,8 @@
 - Add memoize.
 - Draw win line.
 - Remove getScore.
+- Update dependencies.
+
 
 ## Working
 - Create clickable squares.
