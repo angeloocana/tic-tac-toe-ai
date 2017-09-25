@@ -7,7 +7,7 @@ import { getLineMidPoint } from './getLineMidPoint';
  * @param {*} size Size of the canvas
  * @return {[[Number]]} [[x,y]]
  */
-const getXFor00 = memoize(({ clientWidth, clientHeight }) => {
+const getXFor00 = memoize((clientWidth, clientHeight) => {
   const columnWidth = clientWidth / 3;
   const size = {
     init: 0.2,
@@ -40,16 +40,29 @@ const getXFor00 = memoize(({ clientWidth, clientHeight }) => {
  * Get X lines stating at x:0, y:0 to draw in the canvas.
  * @func
  * @param {*} size Size of the canvas
+ * @param {*} square square position to draw
  * @return {[[Number]]} [[x,y]]
  */
-const getX = memoize(({ clientWidth, clientHeight }, startPosition) => {
-  return getXFor00({ clientWidth, clientHeight }).map(line =>
+const _getX = memoize((clientWidth, clientHeight, square) => {
+  const startPosition = square[0];
+
+  return getXFor00(clientWidth, clientHeight).map(line =>
     line.map(position =>
       [
         position[0] + startPosition[0], // new X
         position[1] + startPosition[1] // new Y
       ]));
 });
+
+/**
+ * Get X lines stating at x:0, y:0 to draw in the canvas.
+ * @func
+ * @param {*} size Size of the canvas ctx.canvas
+ * @param {*} square square position to draw
+ * @return {[[Number]]} [[x,y]]
+ */
+const getX = ({ clientWidth, clientHeight }, square) =>
+  _getX(clientWidth, clientHeight, square);
 
 export {
   getX,

@@ -7,17 +7,17 @@
 - Add documentation.
 - New layout.
 - AI.
-- Add memoize.
-- Draw win line.
 - Remove getScore.
 - Update dependencies.
 
 
 ## Working
-- Create clickable squares.
+- Animate last move.
+- Draw win line.
 
 
 ## Done
+- Create clickable squares.
 - Animate O creation.
 - Animate X creation.
 - draw X and O.

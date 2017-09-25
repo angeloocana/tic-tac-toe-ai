@@ -8,8 +8,8 @@ import { drawLinesWithAnimation } from './drawLinesWithAnimation';
  * @param {*} ctx canvas 2d context
  * @return {void}
  */
-const draX = (theme, ctx) => startPosition => {
-  const lines = getX(ctx.canvas, startPosition);
+const drawX = (theme, ctx) => square => {
+  const lines = getX(ctx.canvas, square);
   lines.forEach(drawLine(theme, ctx));
 };
 
@@ -20,12 +20,12 @@ const draX = (theme, ctx) => startPosition => {
  * @param {*} raf request animation frame
  * @return {void}
  */
-const drawXWithAnimation = (theme, ctx, raf) => startPosition => {
-  const lines = getX(ctx.canvas, startPosition);
+const drawXWithAnimation = (theme, ctx, raf) => square => {
+  const lines = getX(ctx.canvas, square);
   drawLinesWithAnimation(theme, ctx, raf)(lines);
 };
 
 export {
-  draX,
+  drawX,
   drawXWithAnimation
 };
