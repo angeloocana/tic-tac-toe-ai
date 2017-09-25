@@ -32,7 +32,7 @@ const getArcFrames = memoize((percentageByFrame, arc) => {
       getArcPercentAngle(percentageByFrame) // The ending angle, in radians
     ];
 
-    frames = addArcFrame(midArc);
+    frames = addArcFrame(frames, midArc);
 
     sAngle = midArc[3];
   }
@@ -45,7 +45,7 @@ const getArcFrames = memoize((percentageByFrame, arc) => {
     arcEndAngle // The ending angle, in radians
   ];
 
-  frames = addArcFrame(lastMidArc);
+  frames = addArcFrame(frames, lastMidArc);
 
   return frames;
 });

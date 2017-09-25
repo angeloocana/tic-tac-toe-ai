@@ -20,6 +20,7 @@ const drawArc = (theme, ctx) => (arc) => {
 
 const drawArcWithAnimation = (theme, ctx, raf) => arc => {
   const frames = getArcFrames(theme.percentageByFrame, arc);
+  console.log('arc frames', frames);
   drawAnimation(theme, ctx, raf)(frames);
 };
 
