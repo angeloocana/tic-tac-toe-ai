@@ -1,13 +1,8 @@
 import { curry } from 'ramda';
 import { getLineMidPoint } from './getLineMidPoint';
+import { addFrame } from './addFrame';
 
-const getLineFrame = (data) => ({
-  type: 'line',
-  data
-});
-
-const addLineFrame = (frames, data) =>
-  frames.concat(getLineFrame(data));
+const addLineFrame = addFrame('line');
 
 /**
  * Split line into small lines to draw by frame

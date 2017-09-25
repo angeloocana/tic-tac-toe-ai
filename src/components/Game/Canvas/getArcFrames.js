@@ -1,4 +1,5 @@
 import { memoize } from 'ramda';
+import { addFrame } from './addFrame';
 
 const arcEndAngle = 2 * Math.PI;
 
@@ -9,6 +10,8 @@ const arcEndAngle = 2 * Math.PI;
  * @return {Number} % in radius
  */
 const getArcPercentAngle = memoize((percent) => (percent * arcEndAngle) / 100);
+
+const addArcFrame = addFrame('arc');
 
 /**
  * get lines chunks and delay to draw by frame
@@ -29,19 +32,20 @@ const getArcFrames = memoize((percentageByFrame, arc) => {
       getArcPercentAngle(percentageByFrame) // The ending angle, in radians
     ];
 
-    frames.push(midArc);
+    frames = addArcFrame(midArc);
 
     sAngle = midArc[3];
   }
 
-  const lastLine = [
+  const lastMidArc = [
     arc[0], // The x-coordinate of the center of the circle
     arc[1], // The y-coordinate of the center of the circle
     arc[2], // The radius of the circle
     sAngle, // The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
     arcEndAngle // The ending angle, in radians
   ];
-  frames.push(lastLine);
+
+  frames = addArcFrame(lastMidArc);
 
   return frames;
 });
