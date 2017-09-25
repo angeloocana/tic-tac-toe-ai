@@ -1,15 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import theme from '../../../themes/theme';
 import raf from 'raf';
-import { drawBoardLinesWithAnimation } from './drawBoardLines';
-import { drawXWithAnimation } from './drawX';
-import { drawArcWithAnimation } from './drawArc';
+import { drawBoard } from './drawBoard';
+import { getSquareIndex } from './getSquareIndex';
 
-class CanvasTest extends React.PureComponent {
+/**
+ * Get click position inside canvas
+ * @param {*} canvas html canvas element
+ * @param {*} event click event
+ * @return {{x: Number, y: Number}} Position
+ */
+const getClickPosition = (canvas, event) => ({
+  x: event.pageX - canvas.offsetLeft,
+  y: event.pageY - canvas.offsetTop
+});
+
+class Canvas extends React.PureComponent {
+
+  getCanvas() {
+    return document.getElementById('myCanvas');
+  }
 
   componentDidMount() {
-    var canvas = document.getElementById('myCanvas');
+    var canvas = this.getCanvas();
     var ctx = canvas.getContext('2d');
+
+    canvas.addEventListener('click', this.handleClicks, false);
 
     const linesTheme = {
       lineColor: theme.colors.white,
@@ -18,9 +35,22 @@ class CanvasTest extends React.PureComponent {
       delayAfterEachLine: 10
     };
 
-    drawBoardLinesWithAnimation(linesTheme, ctx, raf);
-    drawXWithAnimation(linesTheme, ctx, raf)([0, 0]);
-    drawArcWithAnimation(linesTheme, ctx, raf)([100, 35, 20]);
+    drawBoard(linesTheme, ctx, raf)(this.props.board);
+  }
+
+  handleClicks = (event) => {
+    console.log('event: ', event);
+
+    const canvas = this.getCanvas();
+    const position = getClickPosition(canvas, event);
+
+    console.log('position: ', position);
+
+    const index = getSquareIndex(canvas, position);
+
+    if (index) {
+      this.props.selectPosition(index);
+    }
   }
 
   render() {
@@ -39,4 +69,9 @@ class CanvasTest extends React.PureComponent {
   }
 }
 
-export default CanvasTest;
+Canvas.propTypes = {
+  board: PropTypes.array.isRequired,
+  selectPosition: PropTypes.func.isRequired
+};
+
+export default Canvas;
