@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import theme from '../../../themes/theme';
 import raf from 'raf';
-import { drawBoard } from './drawBoard';
+import { drawGame } from './drawGame';
 import { getSquareIndex } from './getSquareIndex';
 
 /**
@@ -35,16 +35,12 @@ class Canvas extends React.PureComponent {
       delayAfterEachLine: 10
     };
 
-    drawBoard(linesTheme, ctx, raf)(this.props.board);
+    drawGame(linesTheme, ctx, raf)(this.props.board);
   }
 
   handleClicks = (event) => {
-    console.log('event: ', event);
-
     const canvas = this.getCanvas();
     const position = getClickPosition(canvas, event);
-
-    console.log('position: ', position);
 
     const index = getSquareIndex(canvas, position);
 

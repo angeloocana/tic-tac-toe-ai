@@ -9,7 +9,7 @@
 - AI.
 - Add memoize.
 - Draw win line.
-
+- Remove getScore.
 
 ## Working
 - Create clickable squares.

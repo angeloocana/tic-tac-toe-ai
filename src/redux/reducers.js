@@ -1,27 +1,20 @@
 import {
-  initialBoard,
-  move,
-  getNewValue
+  initialGame,
+  move
 } from '../ai';
 import { actions } from './actions';
 
-const getBoardAfterMove = (oldBoard, index) => {
-  const newValue = getNewValue(oldBoard);
-  const newBoard = move(oldBoard, index, newValue);
-  return newBoard ? newBoard : oldBoard;
-};
-
-const board = (state, action) => {
+const game = (state, action) => {
   switch (action.type) {
     case actions.NEW_GAME:
-      return initialBoard;
+      return initialGame;
     case actions.SELECT_POSITION:
-      return getBoardAfterMove(state, action.index);
+      return move(state, action.index);
     default:
-      return state || initialBoard;
+      return state || initialGame;
   }
 };
 
 export {
-  board
+  game
 };

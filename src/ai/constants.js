@@ -1,3 +1,4 @@
+const emptyValue = 0;
 const xValue = 1;
 const oValue = -1;
 
@@ -11,9 +12,19 @@ const initialScore = {
 
 const initialBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+const initialGame = {
+  board: initialBoard,
+  ended: false,
+  started: false,
+  lastMove: null,
+  winners: null
+};
+
 export {
   initialBoard,
+  initialGame,
   
+  emptyValue,
   xValue,
   oValue,
 
