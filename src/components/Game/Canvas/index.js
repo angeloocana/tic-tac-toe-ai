@@ -2,6 +2,7 @@ import React from 'react';
 import theme from '../../../themes/theme';
 import raf from 'raf';
 import { drawBoardLinesWithAnimation } from './drawBoardLines';
+import { drawXWithAnimation } from './drawX';
 
 class CanvasTest extends React.PureComponent {
 
@@ -17,6 +18,7 @@ class CanvasTest extends React.PureComponent {
     };
 
     drawBoardLinesWithAnimation(linesTheme, ctx, raf);
+    drawXWithAnimation(linesTheme, ctx, raf)([0, 0]);
   }
 
   render() {
