@@ -41,10 +41,10 @@ class Canvas extends React.PureComponent {
   handleClicks = (event) => {
     const canvas = this.getCanvas();
     const position = getClickPosition(canvas, event);
-
+    
     const index = getSquareIndex(canvas, position);
 
-    if (index) {
+    if (index >= 0) {
       this.props.selectPosition(index);
     }
   }
