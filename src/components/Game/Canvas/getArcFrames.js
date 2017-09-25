@@ -29,12 +29,12 @@ const getArcFrames = memoize((percentageByFrame, arc) => {
       arc[1], // The y-coordinate of the center of the circle
       arc[2], // The radius of the circle
       sAngle, // The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
-      getArcPercentAngle(percentageByFrame) // The ending angle, in radians
+      getArcPercentAngle(i) // The ending angle, in radians
     ];
 
     frames = addArcFrame(frames, midArc);
 
-    sAngle = midArc[3];
+    sAngle = midArc[4];
   }
 
   const lastMidArc = [
