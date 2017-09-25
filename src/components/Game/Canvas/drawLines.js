@@ -1,6 +1,7 @@
 import { getLines } from './getLines';
 import { getLineFrames } from './getLineFrames';
 import { unnest, pipe, map } from 'ramda';
+import { addDelay } from './addDelay';
 
 const drawLine = (theme, ctx) => (line) => {
   const from = line[0];
@@ -24,25 +25,29 @@ const drawLines = (theme, ctx) => {
 
 /**
  * get lines chunks to draw by frame
- * @param {*} percentageByFrame percentage to draw by frame
+ * @param {*} theme {percentageByFrame, delayAfterEachLine}
  * @return {Function} (size) => [[Number]] line chunks
  */
-const getLinesFrames = (percentageByFrame) => pipe(
+const getLinesFrames = (theme) => pipe(
   getLines,
-  map(getLineFrames(percentageByFrame)),
+  map(getLineFrames(theme.percentageByFrame)),
+  map(addDelay(theme.delayAfterEachLine)),
   unnest
 );
 
 const drawLinesWithAnimation = (theme, ctx, raf) => {
   const _drawLine = drawLine(theme, ctx);
-  const lines = getLinesFrames(theme.percentageByFrame)(ctx.canvas);
+  const lines = getLinesFrames(theme)(ctx.canvas);
   let nFrames = 0;
 
   const _drawLines = () => {
-    _drawLine(lines[nFrames]);
+    if (lines[nFrames]) { // skip null delay
+      _drawLine(lines[nFrames]);
+    }
+
     nFrames += 1;
 
-    if (lines[nFrames]) {
+    if (typeof lines[nFrames] !== 'undefined') {
       raf(_drawLines);
     }
   };

@@ -12,7 +12,8 @@ class CanvasTest extends React.PureComponent {
     const linesTheme = {
       lineColor: theme.colors.white,
       lineWidth: 3,
-      percentageByFrame: 5
+      percentageByFrame: 5,
+      delayAfterEachLine: 10
     };
 
     drawLinesWithAnimation(linesTheme, ctx, raf);
