@@ -4,6 +4,11 @@
 - draw X and O.
 - Animate X and O creation.
 - Create favicon.
+- Add google analytics.
+- Fix codecov.
+- Add documentation.
+- New layout.
+- AI.
 
 
 ## Working
