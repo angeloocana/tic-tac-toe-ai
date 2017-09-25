@@ -21,19 +21,19 @@ const Section = styled.section`
 class Game extends React.PureComponent {
 
   render() {
-    const { board, selectPosition } = this.props;
+    const { game, selectPosition } = this.props;
 
     return (
       <Section>
         <Canvas
-          board={board}
+          game={game}
           selectPosition={selectPosition}
         />
         <div>
           <NewGameBtn newGame={this.props.newGame} />
         </div>
         <Board
-          board={board}
+          board={game.board}
           selectPosition={selectPosition}
         />
       </Section>
@@ -42,14 +42,14 @@ class Game extends React.PureComponent {
 };
 
 Game.propTypes = {
-  board: PropTypes.array.isRequired,
+  game: PropTypes.object.isRequired,
   selectPosition: PropTypes.func.isRequired,
   newGame: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    board: state.board
+    game: state.game
   };
 };
 

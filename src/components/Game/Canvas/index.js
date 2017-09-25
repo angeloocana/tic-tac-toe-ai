@@ -35,7 +35,7 @@ class Canvas extends React.PureComponent {
       delayAfterEachLine: 10
     };
 
-    drawGame(linesTheme, ctx, raf)(this.props.board);
+    drawGame(linesTheme, ctx, raf)(this.props.game);
   }
 
   handleClicks = (event) => {
@@ -66,7 +66,7 @@ class Canvas extends React.PureComponent {
 }
 
 Canvas.propTypes = {
-  board: PropTypes.array.isRequired,
+  game: PropTypes.object.isRequired,
   selectPosition: PropTypes.func.isRequired
 };
 

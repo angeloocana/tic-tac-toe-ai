@@ -1,4 +1,7 @@
-import { drawBoardLinesWithAnimation } from './drawBoardLines';
+import { 
+  drawBoardLines,
+  drawBoardLinesWithAnimation 
+} from './drawBoardLines';
 import { drawXWithAnimation } from './drawX';
 import { drawArcWithAnimation } from './drawArc';
 
@@ -7,6 +10,8 @@ const drawGame = (theme, ctx, raf) => (game) => {
     drawBoardLinesWithAnimation(theme, ctx, raf);
     return;
   }
+
+  drawBoardLines(theme, ctx);
 
   // draw pieces
   // draw lastMove with animation
