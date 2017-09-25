@@ -25,7 +25,10 @@ class Game extends React.PureComponent {
 
     return (
       <Section>
-        <Canvas />
+        <Canvas
+          board={board}
+          selectPosition={selectPosition}
+        />
         <div>
           <NewGameBtn newGame={this.props.newGame} />
         </div>
