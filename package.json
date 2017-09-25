@@ -18,16 +18,17 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "prestart": "npm run lint",
-    "start": "npm run develop",
+    "prestart": "yarn run lint",
+    "start": "yarn run develop",
     "lint": "./node_modules/.bin/eslint --fix --ext .js,.jsx --ignore-pattern public .",
     "build": "rm -rf public/*.html && gatsby build",
-    "predeploy": "npm run lint && npm run build && rm ./public/*.js.map",
+    "predeploy": "yarn run lint && yarn run build && rm ./public/*.js.map",
     "deploy": "surge public/ --domain tic-tac-toe-ai.surge.sh",
     "develop": "gatsby develop",
+    "pretest": "yarn run lint",
     "test": "jest && codecov",
     "test:watch": "jest --watch",
-    "serve": "npm run build && gatsby serve"
+    "serve": "yarn run build && gatsby serve"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
