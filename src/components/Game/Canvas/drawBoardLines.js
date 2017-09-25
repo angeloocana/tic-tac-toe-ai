@@ -21,7 +21,7 @@ const drawBoardLines = (theme, ctx) => {
  * @return {void}
  */
 const drawBoardLinesWithAnimation = (theme, ctx, raf) => {
-  const lines = getBoardLines(theme)(getBoardLines(ctx.canvas));
+  const lines = getBoardLines(ctx.canvas);
   drawLinesWithAnimation(theme, ctx, raf)(lines);
 };
 

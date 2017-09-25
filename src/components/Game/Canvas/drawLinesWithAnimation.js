@@ -1,4 +1,5 @@
 import { drawLine } from './drawLine';
+import { getLinesFrames } from './getLinesFrames';
 
 /**
  * Draw lines with animation and delay
@@ -11,6 +12,7 @@ import { drawLine } from './drawLine';
  * @return {Function} Draw line fn (lines) => void
  */
 const drawLinesWithAnimation = (theme, ctx, raf) => (lines) => {
+  lines = getLinesFrames(theme)(lines);
   const _drawLine = drawLine(theme, ctx);
   let nFrames = 0;
 

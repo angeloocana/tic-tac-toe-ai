@@ -1,7 +1,7 @@
 import React from 'react';
 import theme from '../../../themes/theme';
 import raf from 'raf';
-import { drawLinesWithAnimation } from './drawLines';
+import { drawBoardLinesWithAnimation } from './drawBoardLines';
 
 class CanvasTest extends React.PureComponent {
 
@@ -16,7 +16,7 @@ class CanvasTest extends React.PureComponent {
       delayAfterEachLine: 10
     };
 
-    drawLinesWithAnimation(linesTheme, ctx, raf);
+    drawBoardLinesWithAnimation(linesTheme, ctx, raf);
   }
 
   render() {
