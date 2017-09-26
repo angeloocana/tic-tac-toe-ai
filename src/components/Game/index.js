@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Board from './Board';
 import { connect } from 'react-redux';
 import { newGame, selectPosition } from '../../redux/actions';
 import NewGameBtn from './NewGameBtn';
@@ -32,10 +31,6 @@ class Game extends React.PureComponent {
         <div>
           <NewGameBtn newGame={this.props.newGame} />
         </div>
-        <Board
-          board={game.board}
-          selectPosition={selectPosition}
-        />
       </Section>
     );
   }

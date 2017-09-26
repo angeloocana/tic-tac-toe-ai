@@ -15,9 +15,11 @@ const drawWinLine = (theme, ctx, raf) => (game) => {
   if (isNil(game.winners)) {
     return null;
   }
-  
+
   const line = getWinLine(ctx.canvas, game);
   drawLinesWithAnimation(theme, ctx, raf)([line]);
+
+  return null;
 };
 
 export {
