@@ -6,17 +6,17 @@
 - Fix codecov.
 - Add documentation.
 - New layout.
-- AI.
-- Remove getScore.
 - Update dependencies.
 
 
 ## Working
-- Animate last move.
-- Draw win line.
+- AI.
+- Remove getScore.
 
 
 ## Done
+- Animate last move.
+- Draw win line.
 - Create clickable squares.
 - Animate O creation.
 - Animate X creation.
