@@ -22,7 +22,7 @@ class Canvas extends React.PureComponent {
     return document.getElementById('myCanvas');
   }
 
-  componentDidMount() {
+  draw = () => {
     var canvas = this.getCanvas();
     var ctx = canvas.getContext('2d');
 
@@ -38,10 +38,21 @@ class Canvas extends React.PureComponent {
     drawGame(linesTheme, ctx, raf)(this.props.game);
   }
 
+  componentDidUpdate() {
+    this.draw();
+  }
+
+  componentDidMount() {
+    if (!this.didMountOnce) {
+      this.didMountOnce = true;
+      this.draw();
+    }
+  }
+
   handleClicks = (event) => {
     const canvas = this.getCanvas();
     const position = getClickPosition(canvas, event);
-    
+
     const index = getSquareIndex(canvas, position);
 
     if (index >= 0) {

@@ -16,8 +16,10 @@ const drawWinLine = (theme, ctx, raf) => (game) => {
     return null;
   }
 
-  const line = getWinLine(ctx.canvas, game);
-  drawLinesWithAnimation(theme, ctx, raf)([line]);
+  setTimeout(() => {
+    const line = getWinLine(ctx.canvas, game);
+    drawLinesWithAnimation(theme, ctx, raf)([line]);
+  }, 500);
 
   return null;
 };

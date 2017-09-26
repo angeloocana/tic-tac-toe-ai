@@ -20,9 +20,9 @@ const move = (oldGame, index) => {
 
   const nClicks = getNClicks(oldGame.board);
   const newValue = getNewValue(nClicks);
-  
+
   const newBoard = getBoardAfterMove(oldGame.board, index, newValue);
-  
+
   const winners = getWinners(newBoard);
 
   return {
