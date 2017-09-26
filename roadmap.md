@@ -3,10 +3,9 @@
 ## To do
 - Create favicon.
 - Add google analytics.
-- Fix codecov.
+- Add comments.
 - Add documentation.
 - New layout.
-- Update dependencies.
 
 
 ## Working
@@ -15,6 +14,8 @@
 
 
 ## Done
+- Fix codecov.
+- Update dependencies.
 - Animate last move.
 - Draw win line.
 - Create clickable squares.
