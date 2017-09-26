@@ -21,7 +21,7 @@ const drawPositions = (theme, ctx) => (game) => {
   game.board
     .map((value, i) => ({ value, i })) // Keep index
     .filter(p => p.value !== emptyValue) // Remove empty values
-    // .filter(p => p.i !== game.lastMove) // Remove last move it will be draw later with animation
+    .filter(p => p.i !== game.lastMove) // Remove last move it will be draw later with animation
     .map(drawPosition);
 };
 

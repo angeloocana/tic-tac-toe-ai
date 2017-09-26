@@ -3,6 +3,8 @@ import {
   drawBoardLinesWithAnimation
 } from './drawBoardLines';
 import { drawPositions } from './drawPositions';
+import { drawLastMove } from './drawLastMove';
+import { drawWinLine } from './drawWinLine';
 
 const drawGame = (theme, ctx, raf) => (game) => {
   if (!game.started) {
@@ -12,14 +14,11 @@ const drawGame = (theme, ctx, raf) => (game) => {
 
   drawBoardLines(theme, ctx);
 
-  // draw pieces
   drawPositions(theme, ctx)(game);
 
-  // draw lastMove with animation
-  // drawXWithAnimation(theme, ctx, raf)([0, 0]);
-  // drawArcWithAnimation(theme, ctx, raf)([100, 35, 20]);
+  drawLastMove(theme, ctx, raf)(game);
 
-  // draw win line
+  drawWinLine(theme, ctx, raf)(game);
 };
 
 export {
