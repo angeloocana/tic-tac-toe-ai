@@ -90,8 +90,7 @@ class Canvas extends React.PureComponent {
           height="200"
           style={{
             backgroundColor: theme.colors.black,
-            maxWidth: '100%',
-            cursor: 'pointer'
+            maxWidth: '100%'
           }}
         />
       </div>);
