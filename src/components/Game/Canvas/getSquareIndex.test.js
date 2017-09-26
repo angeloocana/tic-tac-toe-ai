@@ -37,4 +37,16 @@ describe('getSquareIndex', () => {
 
     assert.equal(index, 8);
   });
+
+  it('board: 90_90, click: 120_120, index: null', () => {
+    const size = { clientWidth: 90, clientHeight: 90 };
+    const position = {
+      x: 120,
+      y: 120
+    };
+
+    const index = getSquareIndex(size, position);
+
+    assert.notOk(index);
+  });
 });
