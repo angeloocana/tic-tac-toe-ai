@@ -1,3 +1,4 @@
+import {clearCanvas} from './clearCanvas';
 import {
   drawBoardLines,
   drawBoardLinesWithAnimation
@@ -7,6 +8,8 @@ import { drawLastMove } from './drawLastMove';
 import { drawWinLine } from './drawWinLine';
 
 const drawGame = (theme, ctx, raf) => (game) => {
+  clearCanvas(ctx);
+
   if (!game.started) {
     drawBoardLinesWithAnimation(theme, ctx, raf);
     return;
