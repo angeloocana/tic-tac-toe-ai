@@ -5,8 +5,8 @@ import { getBoardSquares } from './getBoardSquares';
 
 const drawPositions = (theme, ctx) => (game) => {
   const squares = getBoardSquares(ctx.canvas);
-  const _drawO = drawO(theme, ctx);
-  const _drawX = drawX(theme, ctx);
+  const _drawO = drawO(theme.o, ctx);
+  const _drawX = drawX(theme.x, ctx);
 
   const drawPosition = (position) => {
     const square = squares[position.i];

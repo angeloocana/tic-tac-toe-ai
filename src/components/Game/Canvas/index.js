@@ -29,10 +29,31 @@ class Canvas extends React.PureComponent {
     canvas.addEventListener('click', this.handleClicks, false);
 
     const linesTheme = {
-      lineColor: theme.colors.white,
-      lineWidth: 3,
-      percentageByFrame: 5,
-      delayAfterEachLine: 10
+      positions: {
+        x: {
+          lineColor: theme.colors.white,
+          lineWidth: 4,
+          percentageByFrame: 15,
+          delayAfterEachLine: 10
+        },
+        o: {
+          lineColor: theme.colors.white,
+          lineWidth: 4,
+          percentageByFrame: 5
+        }
+      },
+      boardLines: {
+        lineColor: theme.colors.white,
+        lineWidth: 2,
+        percentageByFrame: 10,
+        delayAfterEachLine: 10
+      },
+      winLine: {
+        lineColor: theme.colors.green,
+        lineWidth: 8,
+        percentageByFrame: 10,
+        delayAfterEachLine: 10
+      }
     };
 
     drawGame(linesTheme, ctx, raf)(this.props.game);

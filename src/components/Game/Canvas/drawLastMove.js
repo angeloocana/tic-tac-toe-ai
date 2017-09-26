@@ -5,8 +5,8 @@ import { getBoardSquares } from './getBoardSquares';
 
 const drawLastMove = (theme, ctx, raf) => (game) => {
   const squares = getBoardSquares(ctx.canvas);
-  const _drawO = drawOWithAnimation(theme, ctx, raf);
-  const _drawX = drawXWithAnimation(theme, ctx, raf);
+  const _drawO = drawOWithAnimation(theme.o, ctx, raf);
+  const _drawX = drawXWithAnimation(theme.x, ctx, raf);
 
   const square = squares[game.lastMove];
   const value = game.board[game.lastMove];

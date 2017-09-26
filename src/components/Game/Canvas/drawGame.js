@@ -11,17 +11,17 @@ const drawGame = (theme, ctx, raf) => (game) => {
   clearCanvas(ctx);
 
   if (!game.started) {
-    drawBoardLinesWithAnimation(theme, ctx, raf);
+    drawBoardLinesWithAnimation(theme.boardLines, ctx, raf);
     return;
   }
 
-  drawBoardLines(theme, ctx);
+  drawBoardLines(theme.boardLines, ctx);
 
-  drawPositions(theme, ctx)(game);
+  drawPositions(theme.positions, ctx)(game);
 
-  drawLastMove(theme, ctx, raf)(game);
+  drawLastMove(theme.positions, ctx, raf)(game);
 
-  drawWinLine(theme, ctx, raf)(game);
+  drawWinLine(theme.winLine, ctx, raf)(game);
 };
 
 export {
