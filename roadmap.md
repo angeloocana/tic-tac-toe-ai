@@ -10,6 +10,7 @@
 ## Working
 - AI.
 - Remove getScore.
+- getRandom position.
 
 
 ## Done
