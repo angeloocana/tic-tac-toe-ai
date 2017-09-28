@@ -6,3 +6,4 @@ export * from './getScore';
 export * from './move';
 export * from './moveAi';
 export * from './printBoard';
+export * from './getBestPosition';

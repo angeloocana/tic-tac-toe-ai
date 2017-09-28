@@ -26,7 +26,7 @@ const moveUserAndAi = (oldGame, position) => {
   if (gameAfterMove.ended) {
     setTimeout(() => {
       store.dispatch(newGame());
-      setTimeout(() => store.dispatch(moveAiAction()), 1000);
+      setTimeout(() => store.dispatch(moveAiAction()), 1700);
     }, 2000);
   } else {
     setTimeout(() => {

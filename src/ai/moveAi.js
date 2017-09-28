@@ -1,8 +1,10 @@
 import { move } from './move';
-import { getRandomPosition } from './getRandomPosition';
+import { getBestPosition } from './getBestPosition';
 
 const moveAi = (oldGame) => {
-  const position = getRandomPosition(oldGame.board);
+  console.log('moveAi');
+  const position = getBestPosition(oldGame);
+  console.log('position: ', position);
   return move(oldGame, position);
 };
 
