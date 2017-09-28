@@ -1,6 +1,7 @@
 const actions = {
   NEW_GAME: 'NEW_GAME',
-  SELECT_POSITION: 'SELECT_POSITION'
+  SELECT_POSITION: 'SELECT_POSITION',
+  MOVE_AI: 'MOVE_AI'
 };
 
 /**
@@ -27,8 +28,19 @@ const selectPosition = (index) => {
   };
 };
 
+/**
+ * Ask Ai to play.
+ * @returns {Action} moveAi action
+ */
+const moveAi = () => {
+  return {
+    type: actions.MOVE_AI
+  };
+};
+
 export {
   actions,
   newGame,
-  selectPosition
+  selectPosition,
+  moveAi
 };

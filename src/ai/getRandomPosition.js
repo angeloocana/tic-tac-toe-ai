@@ -6,6 +6,7 @@ import { getRandomItem } from 'ptz-math';
  * Get Random Empty Position 
  * @func
  * @param {[Number]} board
+ * @return {Number} random empty position
  */
 const getRandomPosition = pipe(
   getEmptyPositions,
