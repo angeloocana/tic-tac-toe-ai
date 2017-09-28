@@ -2,7 +2,6 @@
 
 ## To do
 - Create favicon.
-- Add google analytics.
 - Add comments.
 - Add documentation.
 - New layout.
@@ -14,6 +13,7 @@
 
 
 ## Done
+- Add google analytics.
 - Fix codecov.
 - Update dependencies.
 - Animate last move.
