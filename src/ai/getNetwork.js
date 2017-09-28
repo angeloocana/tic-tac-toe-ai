@@ -2,7 +2,7 @@ import { Network, Layer } from 'synaptic';
 
 const getNetwork = () => {
   const inputLayer = new Layer(9);
-  const hiddenLayer = new Layer(9);
+  const hiddenLayer = new Layer(100);
   const outputLayer = new Layer(9);
 
   inputLayer.project(hiddenLayer);

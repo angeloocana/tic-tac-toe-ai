@@ -1,10 +1,8 @@
 import { move } from './move';
-import { getBestPosition } from './getBestPosition';
+import { getAiMove } from './getAiMove';
 
 const moveAi = (oldGame) => {
-  console.log('moveAi');
-  const position = getBestPosition(oldGame);
-  console.log('position: ', position);
+  const position = getAiMove(oldGame);
   return move(oldGame, position);
 };
 
