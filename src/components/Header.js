@@ -29,7 +29,7 @@ const SubTitle = styled.p`
 
 const Wrapper = styled.header`
 
-  ${({theme, isHome}) => isHome
+  ${({ theme, isHome }) => isHome
     ? ``
     : `
       @media (min-width: 40rem) {  
@@ -50,14 +50,26 @@ const Wrapper = styled.header`
 `;
 
 const Header = ({ menu, isHome, langs, homeLink, url }) => {
+  const host = 'https://tic-tac-toe-ai.surge.sh';
+
   return (
     <Wrapper isHome={isHome}>
       <FormattedMessage id="title">
-        {(txt) => (
+        {(title) => (
           <Helmet
-            defaultTitle={txt}
-            titleTemplate={`%s | ${txt}`}
-          />
+            defaultTitle={title}
+            titleTemplate={`%s | ${title}`}
+          >
+            <meta property="og:url" content={host + url} />
+            <meta property="og:type" content="game" />
+            <meta property="og:title" content={title} />
+            <FormattedMessage id="header.subTitle">
+              {(subTitle) => (
+                <meta property="og:description" content={subTitle} />
+              )}
+            </FormattedMessage>
+            <meta property="og:image" content={host + '/print.jpg'} />
+          </Helmet>
         )}
       </FormattedMessage>
       <SelectLanguage langs={langs} className="select-languages" />
