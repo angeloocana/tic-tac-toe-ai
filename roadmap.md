@@ -8,12 +8,14 @@
 
 
 ## Working
-- AI.
-- Remove getScore.
-- getRandom position.
+- Play AI x AI.
 
 
 ## Done
+- AI Check for lose positions.
+- AI Check for win positions.
+- Remove getScore.
+- getRandom position.
 - Add google analytics.
 - Fix codecov.
 - Update dependencies.
