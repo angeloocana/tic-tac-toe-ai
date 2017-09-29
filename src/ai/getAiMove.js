@@ -2,7 +2,7 @@ import { getBestPositions } from './getBestPositions';
 import { getNetwork } from './getNetwork';
 import { getPositionIndex } from './getPositionIndex';
 import { getRandomItem } from 'ptz-math';
-import { any, isNil } from 'ramda';
+import { any } from 'ramda';
 import { move } from './move';
 
 const net = getNetwork();
