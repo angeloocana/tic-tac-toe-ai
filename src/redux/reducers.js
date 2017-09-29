@@ -9,6 +9,7 @@ import {
   newGame
 } from './actions';
 import store from './store';
+import { isNil } from 'ramda';
 
 /**
  * Move
@@ -22,6 +23,10 @@ import store from './store';
  */
 const moveUserAndAi = (oldGame, position) => {
   const gameAfterMove = move(oldGame, position);
+
+  if (isNil(gameAfterMove)) {
+    return oldGame;
+  }
 
   if (gameAfterMove.ended) {
     setTimeout(() => {
@@ -40,7 +45,11 @@ const moveUserAndAi = (oldGame, position) => {
 const moveAiAndNewGame = (oldGame) => {
   const gameAfterMove = moveAi(oldGame);
 
-  if(gameAfterMove.ended){
+  if (isNil(gameAfterMove)) {
+    return oldGame;
+  }
+
+  if (gameAfterMove.ended) {
     setTimeout(() => store.dispatch(newGame()), 2000);
   }
 

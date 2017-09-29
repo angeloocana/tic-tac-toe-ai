@@ -1,6 +1,7 @@
 import { getNewValue } from './getNewValue';
 import { getNClicks } from './getNClicks';
 import { getWinners } from './getWinners';
+import { isNil } from 'ramda';
 
 const getBoardAfterMove = (oldBoard, index, value) => {
   if (oldBoard[index] !== 0) {
@@ -22,13 +23,17 @@ const move = (oldGame, index) => {
 
   const newBoard = getBoardAfterMove(oldGame.board, index, newValue);
 
+  if (isNil(newBoard)) {
+    return null;
+  }
+
   const winners = getWinners(newBoard);
 
   return {
-    board: newBoard || oldGame.board,
-    ended: newBoard && (winners || getNClicks(newBoard) > 8) ? true : false,
-    started: newBoard ? true : oldGame.started,
-    lastMove: newBoard ? index : null,
+    board: newBoard,
+    ended: winners || getNClicks(newBoard) > 8 ? true : false,
+    started: true,
+    lastMove: index,
     winners
   };
 };

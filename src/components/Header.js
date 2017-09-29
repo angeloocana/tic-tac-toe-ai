@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import Menu from './Menu';
 import styled from 'styled-components';
 import SelectLanguage from './SelectLanguage';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 const headerTheme = (props) =>
   props.isHome
@@ -49,29 +49,26 @@ const Wrapper = styled.header`
   `}  
 `;
 
-const Header = ({ menu, isHome, langs, homeLink, url }) => {
+const Header = ({ menu, isHome, langs, homeLink, url, intl }) => {
   const host = 'https://tic-tac-toe-ai.surge.sh';
+
+  const title = intl.formatMessage({ id: 'title' });
+  const description = intl.formatMessage({ id: 'header.subTitle' });
 
   return (
     <Wrapper isHome={isHome}>
-      <FormattedMessage id="title">
-        {(title) => (
-          <Helmet
-            defaultTitle={title}
-            titleTemplate={`%s | ${title}`}
-          >
-            <meta property="og:url" content={host + url} />
-            <meta property="og:type" content="game" />
-            <meta property="og:title" content={title} />
-            <FormattedMessage id="header.subTitle">
-              {(subTitle) => (
-                <meta property="og:description" content={subTitle} />
-              )}
-            </FormattedMessage>
-            <meta property="og:image" content={host + '/print.jpg'} />
-          </Helmet>
-        )}
-      </FormattedMessage>
+      <Helmet
+        defaultTitle={title}
+        titleTemplate={`%s | ${title}`}
+      >
+        <meta property="og:url" content={host + url} />
+        <meta property="og:type" content="game" />
+        <meta property="fb:app_id" content="488802994839251" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={host + '/print.jpg'} />
+      </Helmet>
+      )}
       <SelectLanguage langs={langs} className="select-languages" />
       <FormattedMessage id="header.title">
         {(title) => (
@@ -95,7 +92,8 @@ Header.propTypes = {
   isHome: PropTypes.bool,
   langs: PropTypes.array,
   homeLink: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
+  intl: PropTypes.object
 };
 
-export default Header;
+export default injectIntl(Header);

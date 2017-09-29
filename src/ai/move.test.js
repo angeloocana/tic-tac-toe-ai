@@ -52,17 +52,9 @@ describe('move', () => {
 
     const index = 3;
 
-    const expected = {
-      board: [0, 0, 0, xValue, 0, 0, 0, 0, 0],
-      ended: false,
-      started: true,
-      lastMove: null,
-      winners: null
-    };
-
     const newGame = move(oldGame, index);
 
-    assert.deepEqual(newGame, expected);
+    assert.notOk(newGame);
   });
 
   it('return game and clean lastMove when invalid position', () => {
@@ -76,17 +68,9 @@ describe('move', () => {
 
     const index = -1;
 
-    const expected = {
-      board: [0, 0, 0, xValue, 0, 0, 0, 0, 0],
-      ended: false,
-      started: true,
-      lastMove: null,
-      winners: null
-    };
-
     const newGame = move(oldGame, index);
 
-    assert.deepEqual(newGame, expected);
+    assert.notOk(newGame);
   });
 
   it('set ended and winners when someone wins', () => {
@@ -137,7 +121,7 @@ describe('move', () => {
     assert.deepEqual(newGame, expected);
   });
 
-  it('invalid move', () => {
+  it('return null for invalid move', () => {
     const oldGame = {
       board: [1, -1, 1, -1, -1, 1, 0, 1, -1],
       ended: false,
@@ -148,16 +132,8 @@ describe('move', () => {
 
     const index = 0;
 
-    const expected = {
-      board: [1, -1, 1, -1, -1, 1, 0, 1, -1],
-      ended: false,
-      started: true,
-      lastMove: null,
-      winners: null
-    };
-
     const newGame = move(oldGame, index);
 
-    assert.deepEqual(newGame, expected);
+    assert.notOk(newGame);
   });
 });
