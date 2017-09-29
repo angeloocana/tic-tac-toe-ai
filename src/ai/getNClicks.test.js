@@ -31,4 +31,18 @@ describe('getNClicks', () => {
 
     assert.equal(nClicks, 3);
   });
+
+  it('return 8', () => {
+    const board = [1, -1, 1, -1, -1, 1, 0, 1, -1];
+    const nClicks = getNClicks(board);
+
+    assert.equal(nClicks, 8);
+  });
+
+  it('return 8', () => {
+    const board = [-1, 1, -1, 1, -1, 1, 1, -1, 0];
+    const nClicks = getNClicks(board);
+
+    assert.equal(nClicks, 8);
+  });
 });

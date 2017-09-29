@@ -18,8 +18,7 @@ const move = (oldGame, index) => {
     return oldGame;
   }
 
-  const nClicks = getNClicks(oldGame.board);
-  const newValue = getNewValue(nClicks);
+  const newValue = getNewValue(getNClicks(oldGame.board));
 
   const newBoard = getBoardAfterMove(oldGame.board, index, newValue);
 
@@ -27,7 +26,7 @@ const move = (oldGame, index) => {
 
   return {
     board: newBoard || oldGame.board,
-    ended: winners || nClicks === 8 ? true : false,
+    ended: newBoard && (winners || getNClicks(newBoard) > 8) ? true : false,
     started: newBoard ? true : oldGame.started,
     lastMove: newBoard ? index : null,
     winners

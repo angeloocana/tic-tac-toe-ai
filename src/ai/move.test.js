@@ -136,4 +136,28 @@ describe('move', () => {
 
     assert.deepEqual(newGame, expected);
   });
+
+  it('invalid move', () => {
+    const oldGame = {
+      board: [1, -1, 1, -1, -1, 1, 0, 1, -1],
+      ended: false,
+      started: true,
+      lastMove: 8,
+      winners: null
+    };
+
+    const index = 0;
+
+    const expected = {
+      board: [1, -1, 1, -1, -1, 1, 0, 1, -1],
+      ended: false,
+      started: true,
+      lastMove: null,
+      winners: null
+    };
+
+    const newGame = move(oldGame, index);
+
+    assert.deepEqual(newGame, expected);
+  });
 });
