@@ -17,7 +17,13 @@ describe('move', () => {
       ended: false,
       started: true,
       lastMove: 3,
-      winners: null
+      winners: null,
+      aiStarted: true,
+      isAiTurn: false,
+      score: {
+        human: 0,
+        ai: 0
+      }
     };
 
     const newGame = move(oldGame, index);
@@ -31,7 +37,11 @@ describe('move', () => {
       ended: true,
       started: true,
       lastMove: null,
-      winners: null
+      winners: null,
+      score: {
+        human: 0,
+        ai: 0
+      }
     };
 
     const index = 0;
@@ -47,7 +57,11 @@ describe('move', () => {
       ended: false,
       started: true,
       lastMove: 3,
-      winners: null
+      winners: null,
+      score: {
+        human: 0,
+        ai: 0
+      }
     };
 
     const index = 3;
@@ -63,7 +77,11 @@ describe('move', () => {
       ended: false,
       started: true,
       lastMove: 3,
-      winners: null
+      winners: null,
+      score: {
+        human: 0,
+        ai: 0
+      }
     };
 
     const index = -1;
@@ -79,7 +97,13 @@ describe('move', () => {
       ended: false,
       started: true,
       lastMove: 1,
-      winners: null
+      winners: null,
+      aiStarted: false,
+      isAiTurn: false,
+      score: {
+        human: 0,
+        ai: 0
+      }
     };
 
     const index = 5;
@@ -89,7 +113,13 @@ describe('move', () => {
       ended: true,
       started: true,
       lastMove: 5,
-      winners: [3, 4, 5]
+      winners: [3, 4, 5],
+      aiStarted: false,
+      isAiTurn: true,
+      score: {
+        human: 3,
+        ai: 0
+      }
     };
 
     const newGame = move(oldGame, index);
@@ -103,7 +133,13 @@ describe('move', () => {
       ended: false,
       started: true,
       lastMove: 1,
-      winners: null
+      winners: null,
+      aiStarted: true,
+      isAiTurn: false,
+      score: {
+        human: 0,
+        ai: 0
+      }
     };
 
     const index = 8;
@@ -113,7 +149,13 @@ describe('move', () => {
       ended: true,
       started: true,
       lastMove: 8,
-      winners: null
+      winners: null,
+      aiStarted: true,
+      isAiTurn: true,
+      score: {
+        human: 1,
+        ai: 1
+      }
     };
 
     const newGame = move(oldGame, index);
@@ -127,7 +169,13 @@ describe('move', () => {
       ended: false,
       started: true,
       lastMove: 8,
-      winners: null
+      winners: null,
+      aiStarted: false,
+      isAiTurn: false,
+      score: {
+        human: 0,
+        ai: 0
+      }
     };
 
     const index = 0;
