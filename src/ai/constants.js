@@ -1,3 +1,5 @@
+import { merge } from 'ramda';
+
 const emptyValue = 0;
 const xValue = 1;
 const oValue = -1;
@@ -17,13 +19,24 @@ const initialGame = {
   ended: false,
   started: false,
   lastMove: null,
-  winners: null
+  winners: null,
+  isAiTurn: true,
+  aiStarted: true
+};
+
+const getInitialGame = (oldGame) => {
+  return oldGame
+    ? merge(initialGame, {
+      isAiTurn: !oldGame.aiStarted,
+      aiStarted: !oldGame.aiStarted
+    }, {})
+    : initialGame;
 };
 
 export {
   initialBoard,
   initialGame,
-  
+
   emptyValue,
   xValue,
   oValue,
@@ -31,5 +44,7 @@ export {
   winValue,
   loseValue,
 
-  initialScore
+  initialScore,
+
+  getInitialGame
 };

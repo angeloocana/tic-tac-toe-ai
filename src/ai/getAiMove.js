@@ -2,7 +2,7 @@ import { getBestPositions } from './getBestPositions';
 import { getNetwork } from './getNetwork';
 import { getPositionIndex } from './getPositionIndex';
 import { getRandomItem } from 'ptz-math';
-import { any } from 'ramda';
+import { any, isNil } from 'ramda';
 import { move } from './move';
 
 const net = getNetwork();
@@ -15,7 +15,9 @@ const learningRates = {
 };
 
 const getAiMove = (oldGame) => {
-  console.log('oldGame: ', oldGame);
+  if (isNil(oldGame)) {
+    return oldGame;
+  }
 
   const output = net.activate(oldGame.board);
 

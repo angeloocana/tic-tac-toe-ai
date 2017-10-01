@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { newGame, selectPosition } from '../../redux/actions';
+import { moveAi, newGame, selectPosition } from '../../redux/actions';
 import NewGameBtn from './NewGameBtn';
 import styled from 'styled-components';
 import Canvas from './Canvas';
@@ -52,6 +52,9 @@ const mapDispatchToProps = dispatch => {
   return {
     newGame: type => {
       dispatch(newGame(type));
+    },
+    moveAi: type => {
+      dispatch(moveAi(type));
     },
     selectPosition: index => {
       dispatch(selectPosition(index));

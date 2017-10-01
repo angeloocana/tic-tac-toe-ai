@@ -34,7 +34,9 @@ const move = (oldGame, index) => {
     ended: winners || getNClicks(newBoard) > 8 ? true : false,
     started: true,
     lastMove: index,
-    winners
+    winners,
+    isAiTurn: !oldGame.isAiTurn,
+    aiStarted: oldGame.aiStarted
   };
 };
 

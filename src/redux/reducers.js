@@ -1,7 +1,8 @@
 import {
-  initialGame,
   move,
-  moveAi
+  moveAi,
+  getInitialGame,
+  initialGame
 } from '../ai';
 import {
   actions,
@@ -22,6 +23,11 @@ import { isNil } from 'ramda';
  * @return {Object} game
  */
 const moveUserAndAi = (oldGame, position) => {
+
+  if (oldGame.isAiTurn) {
+    return oldGame;
+  }
+
   const gameAfterMove = move(oldGame, position);
 
   if (isNil(gameAfterMove)) {
@@ -56,16 +62,21 @@ const moveAiAndNewGame = (oldGame) => {
   return gameAfterMove;
 };
 
+const aiStart = (oldGame) => {
+  setTimeout(() => store.dispatch(moveAiAction()), 2000);
+  return getInitialGame(oldGame);
+};
+
 const game = (state, action) => {
   switch (action.type) {
     case actions.NEW_GAME:
-      return initialGame;
+      return aiStart(state);
     case actions.SELECT_POSITION:
       return moveUserAndAi(state, action.index);
     case actions.MOVE_AI:
-      return moveAiAndNewGame(state);
+      return moveAiAndNewGame(state || initialGame);
     default:
-      return state || initialGame;
+      return state || aiStart();
   }
 };
 
