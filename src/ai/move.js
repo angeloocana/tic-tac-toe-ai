@@ -14,12 +14,23 @@ const getBoardAfterMove = (oldBoard, index, value) => {
       : position);
 };
 
+const getScore = (oldScore, winners, isMyTurn) => {
+  if (winners) {
+    return oldScore + (isMyTurn ? 3 : 0);
+  }
+  else {
+    return oldScore + 1;
+  }
+};
+
 const move = (oldGame, index) => {
   if (oldGame.ended) {
     return oldGame;
   }
 
-  const newValue = getNewValue(getNClicks(oldGame.board));
+  const nClicks = getNClicks(oldGame.board);
+
+  const newValue = getNewValue(nClicks);
 
   const newBoard = getBoardAfterMove(oldGame.board, index, newValue);
 
@@ -29,14 +40,26 @@ const move = (oldGame, index) => {
 
   const winners = getWinners(newBoard);
 
+  const isNClicksOdd = nClicks % 2 === 0;
+
+  const ended = winners || nClicks > 7 ? true : false;
+
+  console.log('nClicks', nClicks);
+
   return {
     board: newBoard,
-    ended: winners || getNClicks(newBoard) > 8 ? true : false,
+    ended,
     started: true,
     lastMove: index,
     winners,
     isAiTurn: !oldGame.isAiTurn,
-    aiStarted: oldGame.aiStarted
+    aiStarted: oldGame.aiStarted,
+    score: ended
+      ? {
+        ai: getScore(oldGame.score.ai, winners, oldGame.aiStarted ? isNClicksOdd : !isNClicksOdd),
+        human: getScore(oldGame.score.human, winners, oldGame.aiStarted ? !isNClicksOdd : isNClicksOdd)
+      }
+      : oldGame.score
   };
 };
 

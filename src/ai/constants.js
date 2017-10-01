@@ -21,14 +21,19 @@ const initialGame = {
   lastMove: null,
   winners: null,
   isAiTurn: true,
-  aiStarted: true
+  aiStarted: true,
+  score: {
+    ai: 0,
+    human: 0
+  }
 };
 
 const getInitialGame = (oldGame) => {
   return oldGame
     ? merge(initialGame, {
       isAiTurn: !oldGame.aiStarted,
-      aiStarted: !oldGame.aiStarted
+      aiStarted: !oldGame.aiStarted,
+      score: oldGame.score
     }, {})
     : initialGame;
 };

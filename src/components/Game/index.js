@@ -5,6 +5,8 @@ import { moveAi, newGame, selectPosition } from '../../redux/actions';
 import NewGameBtn from './NewGameBtn';
 import styled from 'styled-components';
 import Canvas from './Canvas';
+import AiIcon from 'react-icons/lib/md/phone-android';
+import UserIcon from 'react-icons/lib/md/person';
 
 const Section = styled.section`
   display: flex;
@@ -17,6 +19,27 @@ const Section = styled.section`
   text-align: center;
 `;
 
+const Score = styled.div`
+  padding-bottom: 1rem;
+
+  svg {
+    font-size: ${({ theme }) => theme.scale(1)};
+  }
+  
+  span, svg {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .points {
+    font-size: ${({ theme }) => theme.scale(3)};
+    font-weight: bold;    
+    padding: 0 ${({ theme }) => theme.scale(-4)};
+    top: 0.1rem;
+    position: relative;
+  }
+`;
+
 class Game extends React.PureComponent {
 
   render() {
@@ -24,6 +47,13 @@ class Game extends React.PureComponent {
 
     return (
       <Section>
+        <Score>
+          <UserIcon />
+          <span className="points">{game.score.human}</span>
+          <span>x</span>
+          <span className="points">{game.score.ai}</span>
+          <AiIcon />
+        </Score>
         <Canvas
           game={game}
           selectPosition={selectPosition}
