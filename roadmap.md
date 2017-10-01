@@ -9,9 +9,10 @@
 
 ## Working
 - Play AI x AI.
-
+- Create web worker.
 
 ## Done
+- Ai Starts.
 - AI Check for lose positions.
 - AI Check for win positions.
 - Remove getScore.
