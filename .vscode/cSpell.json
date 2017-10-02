@@ -6,6 +6,7 @@
     "language": "en",
     // words - list of words to be always considered correct
     "words": [
+        "minification",
         "unnest"
     ],
     // flagWords - list of words to be always considered incorrect
