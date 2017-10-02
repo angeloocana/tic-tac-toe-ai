@@ -10,6 +10,7 @@
 - Add google ads, facebook or other (Find the best one).
 - Add login? (for free).
 - Add ranking? (for free).
+- E-mail subscription.
 
 
 ## Working
