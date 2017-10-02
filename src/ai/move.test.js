@@ -117,7 +117,7 @@ describe('move', () => {
       aiStarted: false,
       isAiTurn: true,
       score: {
-        human: 3,
+        human: 1,
         ai: 0
       }
     };
@@ -153,8 +153,8 @@ describe('move', () => {
       aiStarted: true,
       isAiTurn: true,
       score: {
-        human: 1,
-        ai: 1
+        human: 0,
+        ai: 0
       }
     };
 

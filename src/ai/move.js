@@ -16,10 +16,10 @@ const getBoardAfterMove = (oldBoard, index, value) => {
 
 const getScore = (oldScore, winners, isMyTurn) => {
   if (winners) {
-    return oldScore + (isMyTurn ? 3 : 0);
+    return oldScore + (isMyTurn ? 1 : 0);
   }
   else {
-    return oldScore + 1;
+    return oldScore;
   }
 };
 
