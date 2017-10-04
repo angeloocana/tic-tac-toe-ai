@@ -68,7 +68,6 @@ const Header = ({ menu, isHome, langs, homeLink, url, intl }) => {
         <meta property="og:description" content={description} />
         <meta property="og:image" content={host + '/print.jpg'} />
       </Helmet>
-      )}
       <SelectLanguage langs={langs} className="select-languages" />
       <FormattedMessage id="header.title">
         {(title) => (

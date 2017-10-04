@@ -44,8 +44,6 @@ const move = (oldGame, index) => {
 
   const ended = winners || nClicks > 7 ? true : false;
 
-  console.log('nClicks', nClicks);
-
   return {
     board: newBoard,
     ended,

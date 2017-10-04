@@ -2,24 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
-import graphql from 'graphql';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../themes/theme';
-import { getMessages } from '../data/messages';
-
-import { addLocaleData, IntlProvider } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import fr from 'react-intl/locale-data/fr';
-import pt from 'react-intl/locale-data/pt';
-import es from 'react-intl/locale-data/es';
-
-import 'intl';
-import 'intl/locale-data/jsonp/en';
-import 'intl/locale-data/jsonp/fr';
-import 'intl/locale-data/jsonp/pt';
-import 'intl/locale-data/jsonp/es';
 
 import {
   getLangs,
@@ -28,24 +14,9 @@ import {
   isHomePage
 } from 'ptz-i18n';
 
+import { IntlProvider } from 'react-intl';
 
-// Performance Measurement
-//
-// import Perf from 'react-addons-perf';
-
-// if (typeof window !== 'undefined') {
-//   window.Perf = Perf;
-//   console.log('start perf');
-//   Perf.start();
-//   setTimeout(() => {
-//     console.log('stop perf');
-//     Perf.stop();
-//     console.log(Perf.printWasted());
-//     console.log(Perf.printOperations());
-//   }, 5000);
-// }
-
-addLocaleData([...en, ...fr, ...pt, ...es]);
+import 'intl';
 
 const Background = styled.div`
   background-color: ${props => props.theme.bg};
@@ -85,7 +56,7 @@ const Wrapper = (props) => {
     <ThemeProvider theme={theme}>
       <IntlProvider
         locale={langKey}
-        messages={getMessages(langKey)}
+        messages={props.i18nMessages}
       >
         <Background>
           <BodyContainer>
@@ -114,7 +85,8 @@ const Wrapper = (props) => {
 Wrapper.propTypes = {
   children: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  i18nMessages: PropTypes.object.isRequired
 };
 
 const Layout = (props, context, c) => {
@@ -128,28 +100,3 @@ const Layout = (props, context, c) => {
 };
 
 export default Layout;
-
-export const pageQuery = graphql`
-  query Layout {
-    site {
-      siteMetadata {
-        languages {
-          defaultLangKey
-          langs
-        }
-        author {
-          name
-          homeCity
-          email
-          defaultLink
-        }
-        sourceCodeLink
-        menu {
-          label
-          link
-          slug
-        }
-      }
-    }
-  }
-`;

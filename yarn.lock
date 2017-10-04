@@ -4078,9 +4078,9 @@ gatsby-plugin-google-analytics@^1.0.1:
   dependencies:
     babel-runtime "^6.26.0"
 
-gatsby-plugin-i18n@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-i18n/-/gatsby-plugin-i18n-0.2.0.tgz#09b1d2ca121d88b0a1543edf33d75108a12c7e06"
+gatsby-plugin-i18n@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-i18n/-/gatsby-plugin-i18n-0.3.0.tgz#b0fa72ef19652c56bebf27fa890c55b1af6e6527"
   dependencies:
     graphql "^0.11.1"
 
@@ -4641,10 +4641,10 @@ graphql@^0.10.3, graphql@^0.10.5:
     iterall "^1.1.0"
 
 graphql@^0.11.1:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.11.3.tgz#9934e2df28f17d397a85f83cb39d1d179bffef47"
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.11.7.tgz#e5abaa9cb7b7cccb84e9f0836bf4370d268750c6"
   dependencies:
-    iterall "^1.1.0"
+    iterall "1.1.3"
 
 gray-matter@^2.1.0:
   version "2.1.1"
@@ -5751,6 +5751,10 @@ items@1.x.x, items@^1.1.x:
 items@2.x.x:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/items/-/items-2.1.1.tgz#8bd16d9c83b19529de5aea321acaada78364a198"
+
+iterall@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.3.tgz#1cbbff96204056dde6656e2ed2e2226d0e6d72c9"
 
 iterall@^1.1.0:
   version "1.1.1"
