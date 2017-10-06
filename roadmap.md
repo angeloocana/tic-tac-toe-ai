@@ -15,12 +15,12 @@
 
 ## Working
 - Replace board array with bits.
-- Show thinking message while is AI turn.
 - Generate all games tree. (Use it to train and select the best neural network.)
 - Play AI x AI.
 
 
 ## Done
+- Show thinking message while is AI turn.
 - Create web worker.
 - Fix minification and remove => from https://tic-tac-toe-ai.surge.sh/component---src-layouts-index-js-990e252465cbad02dc1a.js
 - Ai Starts.

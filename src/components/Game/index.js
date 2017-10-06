@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Canvas from './Canvas';
 import AiIcon from 'react-icons/lib/md/phone-android';
 import UserIcon from 'react-icons/lib/md/person';
+import { FormattedMessage } from 'react-intl';
 
 const Section = styled.section`
   display: flex;
@@ -53,6 +54,7 @@ class Game extends React.PureComponent {
           <span>x</span>
           <span className="points">{game.score.ai}</span>
           <AiIcon />
+          {game.isAiTurn ? (<FormattedMessage id="thinking" />) : null}
         </Score>
         <Canvas
           game={game}

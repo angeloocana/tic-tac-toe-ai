@@ -12,5 +12,7 @@ module.exports = {
   'sourceCode': 'Source Code',
   'openSource': 'Open Source',
 
-  'newGame': 'New Game'
+  'newGame': 'New Game',
+
+  'thinking': 'Thinking'
 };
