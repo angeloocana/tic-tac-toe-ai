@@ -4078,11 +4078,11 @@ gatsby-plugin-google-analytics@^1.0.1:
   dependencies:
     babel-runtime "^6.26.0"
 
-gatsby-plugin-i18n@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-i18n/-/gatsby-plugin-i18n-0.3.0.tgz#b0fa72ef19652c56bebf27fa890c55b1af6e6527"
+gatsby-plugin-i18n@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-i18n/-/gatsby-plugin-i18n-0.3.2.tgz#3741798dc0bbe6e75e9104eb5f550871efbab926"
   dependencies:
-    graphql "^0.11.1"
+    graphql "^0.11.7"
 
 gatsby-plugin-manifest@^1.0.1:
   version "1.0.8"
@@ -4640,7 +4640,7 @@ graphql@^0.10.3, graphql@^0.10.5:
   dependencies:
     iterall "^1.1.0"
 
-graphql@^0.11.1:
+graphql@^0.11.7:
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.11.7.tgz#e5abaa9cb7b7cccb84e9f0836bf4370d268750c6"
   dependencies:
