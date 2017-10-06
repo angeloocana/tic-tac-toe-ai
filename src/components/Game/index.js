@@ -41,6 +41,18 @@ const Score = styled.div`
   }
 `;
 
+const getWinLostMsg = (game, forAi) => {
+  if (!game.ended) {
+    return null;
+  }
+
+  const id = game.winners && game.isAiTurn === forAi
+    ? 'iWon'
+    : 'iLost';
+
+  return (<FormattedMessage id={id} />);
+};
+
 class Game extends React.PureComponent {
 
   render() {
@@ -49,12 +61,14 @@ class Game extends React.PureComponent {
     return (
       <Section>
         <Score>
+          {getWinLostMsg(game, false)}
           <UserIcon />
           <span className="points">{game.score.human}</span>
           <span>x</span>
           <span className="points">{game.score.ai}</span>
           <AiIcon />
-          {game.isAiTurn ? (<FormattedMessage id="thinking" />) : null}
+          {game.isAiTurn && !game.ended ? (<FormattedMessage id="thinking" />) : null}
+          {getWinLostMsg(game, true)}
         </Score>
         <Canvas
           game={game}

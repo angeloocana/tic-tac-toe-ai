@@ -14,5 +14,7 @@ module.exports = {
 
   'newGame': 'New Game',
 
-  'thinking': 'Thinking'
+  'thinking': 'Thinking',
+  'iWon': 'I won! uhuh',
+  'iLost': '=('
 };

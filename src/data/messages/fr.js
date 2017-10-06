@@ -14,5 +14,7 @@ module.exports = {
 
   'newGame': 'Nouveau Jeu',
 
-  'thinking': 'En pensant'
+  'thinking': 'En pensant',
+  'iWon': `J'ai gagné! uhuh`,
+  'iLost': '=('
 };
