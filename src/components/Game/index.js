@@ -46,7 +46,7 @@ const getWinLostMsg = (game, forAi) => {
     return null;
   }
 
-  const id = game.winners && game.isAiTurn === forAi
+  const id = game.winners && game.isAiTurn !== forAi
     ? 'iWon'
     : 'iLost';
 
