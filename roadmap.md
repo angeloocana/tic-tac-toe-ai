@@ -14,6 +14,8 @@
 
 
 ## Working
+- Replace board array with bits.
+- Show thinking message while is AI turn.
 - Generate all games tree. (Use it to train and select the best neural network.)
 - Play AI x AI.
 
