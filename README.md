@@ -12,6 +12,7 @@ Play => http://tic-tac-toe-ai.surge.sh/
 # Built with
 
 - HTML5 Canvas API
+- Web workers
 - Synaptic
 - Gatsby
 - React
