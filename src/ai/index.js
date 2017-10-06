@@ -1,4 +1,5 @@
 export * from './constants';
+export * from './getAiMove';
 export * from './getNetwork';
 export * from './getNewValue';
 export * from './getPositionIndex';

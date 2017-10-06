@@ -1,9 +1,9 @@
 import store from '../store';
 import { getInitialGame } from '../../ai';
-import { moveAi } from '../actions';
+import { askAiMove } from '../actions';
 
 const aiStart = (oldGame) => {
-  setTimeout(() => store.dispatch(moveAi()), 2000);
+  setTimeout(() => store.dispatch(askAiMove()), 2000);
   return getInitialGame(oldGame);
 };
 

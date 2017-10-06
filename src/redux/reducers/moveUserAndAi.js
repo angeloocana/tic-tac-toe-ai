@@ -1,7 +1,7 @@
 import store from '../store';
 import { move } from '../../ai';
 import {
-  moveAi,
+  askAiMove,
   newGame
 } from '../actions';
 
@@ -32,11 +32,11 @@ const moveUserAndAi = (oldGame, position) => {
   if (gameAfterMove.ended) {
     setTimeout(() => {
       store.dispatch(newGame());
-      setTimeout(() => store.dispatch(moveAi()), 1700);
+      setTimeout(() => store.dispatch(askAiMove()), 1700);
     }, 2000);
   } else {
     setTimeout(() => {
-      store.dispatch(moveAi());
+      store.dispatch(askAiMove());
     }, 1000);
   }
 

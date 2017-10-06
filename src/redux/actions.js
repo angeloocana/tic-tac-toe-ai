@@ -1,7 +1,8 @@
 const actions = {
   NEW_GAME: 'NEW_GAME',
   SELECT_POSITION: 'SELECT_POSITION',
-  MOVE_AI: 'MOVE_AI'
+  ASK_AI_MOVE: 'ASK_AI_MOVE',
+  AI_MOVE: 'AI_MOVE'
 };
 
 /**
@@ -30,17 +31,30 @@ const selectPosition = (index) => {
 
 /**
  * Ask Ai to play.
- * @returns {Action} moveAi action
+ * @returns {Action} aiMove action
  */
-const moveAi = () => {
+const askAiMove = () => {
   return {
-    type: actions.MOVE_AI
+    type: actions.ASK_AI_MOVE
+  };
+};
+
+/**
+ * Apply Ai move.
+ * @param {*} data {oldGame, position}
+ * @returns {Action} aiMove action
+ */
+const aiMove = (data) => {
+  return {
+    type: actions.AI_MOVE,
+    data
   };
 };
 
 export {
   actions,
-  newGame,
-  selectPosition,
-  moveAi
+  aiMove,
+  askAiMove,
+  newGame,  
+  selectPosition  
 };

@@ -2,10 +2,14 @@ import store from '../store';
 import { moveAi } from '../../ai';
 import { newGame } from '../actions';
 
-import { isNil } from 'ramda';
+import { equals, isNil } from 'ramda';
 
-const moveAiAndNewGame = (oldGame) => {
-  const gameAfterMove = moveAi(oldGame);
+const moveAiAndNewGame = (oldGame, data) => {
+  if (!equals(oldGame.board, data.oldGame.board)) {
+    return oldGame;
+  }
+
+  const gameAfterMove = moveAi(oldGame, data.position);
 
   if (isNil(gameAfterMove)) {
     return oldGame;

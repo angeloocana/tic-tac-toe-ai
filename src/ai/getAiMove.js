@@ -25,8 +25,6 @@ const getAiMove = (oldGame) => {
 
   const gameAfterMove = move(oldGame, index);
 
-  console.log('AI index: ', index);
-
   if (gameAfterMove && gameAfterMove.ended) {
 
     console.log('AI win!');
