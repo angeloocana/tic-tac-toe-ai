@@ -1,6 +1,8 @@
 import { filter, head } from 'ramda';
+import { emptyValue } from './constants';
+import getPosition from './getPosition';
 
-const positionToCheck = [
+const positionsToCheck = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -13,23 +15,23 @@ const positionToCheck = [
   [2, 4, 6]
 ];
 
-const getWinnersByPositions = (b) => filter((p) =>
-  b[p[0]] !== 0 && b[p[0]] === b[p[1]] && b[p[1]] === b[p[2]]);
-
 /**
- * get Score
- * @param {*} board board 0 -> 8 x=1 o=-1
- * @return {{x: {Number}, o: {Number}}} score obj -1 lose, 1 win
+ * Check winners for 3 winning positions
+ * @param {Number} board board
+ * @return {[Number]} winners
  */
 const getWinners = (board) => {
-  if (!board) {
-    return null;
-  }
+  const get = getPosition(board);
 
-  const winners = getWinnersByPositions(board)(positionToCheck);
-  return head(winners) || null;
+  return head(
+    filter((positions) => {
+      const p0 = get(positions[0]);
+      const p1 = get(positions[1]);
+      const p2 = get(positions[2]);
+
+      return p0 !== emptyValue && p0 === p1 && p1 === p2;
+    }, positionsToCheck)
+  ) || null;
 };
 
-export {
-  getWinners
-};
+export default getWinners;

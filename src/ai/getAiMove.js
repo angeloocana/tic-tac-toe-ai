@@ -1,9 +1,9 @@
-import { getBestPositions } from './getBestPositions';
-import { getNetwork } from './getNetwork';
-import { getPositionIndex } from './getPositionIndex';
-import { getRandomItem } from 'ptz-math';
+import getBestPositions from './getBestPositions';
+import getNetwork from './getNetwork';
+import getPositionIndex from './getPositionIndex';
+import move from './move';
 import { any, isNil } from 'ramda';
-import { move } from './move';
+import { getRandomItem } from 'ptz-math';
 
 const net = getNetwork();
 
@@ -14,22 +14,24 @@ const learningRates = {
   lost: 0
 };
 
+/**
+ * Get ai move index position
+ * @param {*} oldGame game
+ * @return {Number} position index
+ */
 const getAiMove = (oldGame) => {
   if (isNil(oldGame)) {
     return oldGame;
   }
 
-  const output = net.activate(oldGame.board);
+  const output = net.activate([oldGame.board]);
 
   const index = getPositionIndex(output);
 
-  const gameAfterMove = move(oldGame, index);
+  const newGame = move(oldGame, index);
 
-  if (gameAfterMove && gameAfterMove.ended) {
-
-    console.log('AI win!');
-
-    net.propagate(learningRates.win, gameAfterMove.board);
+  if (newGame && newGame.ended) {
+    net.propagate(learningRates.win, newGame.board);
     return index;
 
   } else {
@@ -37,16 +39,10 @@ const getAiMove = (oldGame) => {
     const bestPositions = getBestPositions(oldGame);
 
     if (any(p => index === p, bestPositions)) {
-
-      console.log('AI valid move!');
-
-      net.propagate(learningRates.validMove, gameAfterMove.board);
+      net.propagate(learningRates.validMove, newGame.board);
       return index;
 
-    } else {
-
-      console.log('AI INVALID move!');
-
+    } else {      
       const bestPosition = getRandomItem(bestPositions);
       const gameAfterBestMove = move(oldGame, bestPosition);
       net.propagate(learningRates.invalidMove, gameAfterBestMove.board);
@@ -56,6 +52,4 @@ const getAiMove = (oldGame) => {
   }
 };
 
-export {
-  getAiMove
-};
+export default getAiMove;

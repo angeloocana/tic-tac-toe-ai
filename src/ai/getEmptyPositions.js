@@ -1,15 +1,13 @@
-import { emptyValue } from './constants';
+import { boardIndexes } from './constants';
+import isPositionEmpty from './isPositionEmpty';
+import { filter } from 'ramda';
 
-const getEmptyPositions = (board) => {
-  return board
-    .map((value, i) => ({ // save index to i
-      i,
-      value
-    }))
-    .filter(p => p.value === emptyValue) // filter empty positions
-    .map(p => p.i);
-};
+/**
+ * Get all empty positions indexes
+ * @param {Number} board board bits
+ * @return {[Number]} indexes array
+ */
+const getEmptyPositions = (board) =>
+  filter(i => isPositionEmpty(board, i), boardIndexes);
 
-export {
-  getEmptyPositions
-};
+export default getEmptyPositions;

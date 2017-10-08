@@ -1,6 +1,6 @@
 import store from '../store';
 import { aiMove } from '../actions';
-import { getAiMove } from '../../ai';
+import getAiMove from '../../ai/getAiMove';
 import { isNil } from 'ramda';
 
 // eslint-disable-next-line
@@ -33,6 +33,4 @@ const askAiMove = (oldGame) => {
   return oldGame;
 };
 
-export {
-  askAiMove
-};
+export default askAiMove;

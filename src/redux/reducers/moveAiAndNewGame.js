@@ -1,7 +1,6 @@
 import store from '../store';
-import { moveAi } from '../../ai';
+import moveAi from '../../ai/moveAi';
 import { newGame } from '../actions';
-
 import { equals, isNil } from 'ramda';
 
 const moveAiAndNewGame = (oldGame, data) => {
@@ -22,6 +21,4 @@ const moveAiAndNewGame = (oldGame, data) => {
   return gameAfterMove;
 };
 
-export {
-  moveAiAndNewGame
-};
+export default moveAiAndNewGame;

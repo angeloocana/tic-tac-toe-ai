@@ -1,4 +1,4 @@
-import { getAiMove } from './ai';
+import getAiMove from './ai/getAiMove';
 
 // eslint-disable-next-line
 onmessage = (e) => {

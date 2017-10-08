@@ -1,19 +1,16 @@
 import * as assert from 'ptz-assert';
-import { move } from './move';
-import {
-  initialBoard,
-  oValue,
-  xValue,
-  initialGame
-} from './constants';
+import move from './move';
+import { _, O, X } from './constants';
+import getInitialGame from './getInitialGame';
+import getBoard from './getBoard';
 
 describe('move', () => {
   it('first move, set started and lastMove', () => {
-    const oldGame = initialGame;
+    const oldGame = getInitialGame();
     const index = 3;
 
     const expected = {
-      board: [0, 0, 0, xValue, 0, 0, 0, 0, 0],
+      board: getBoard(_, _, _, X, _, _, _, _, _),
       ended: false,
       started: true,
       lastMove: 3,
@@ -33,7 +30,7 @@ describe('move', () => {
 
   it('if game ended return game', () => {
     const oldGame = {
-      board: initialBoard,
+      board: getBoard(),
       ended: true,
       started: true,
       lastMove: null,
@@ -53,7 +50,7 @@ describe('move', () => {
 
   it('return game and clean lastMove when position not empty', () => {
     const oldGame = {
-      board: [0, 0, 0, xValue, 0, 0, 0, 0, 0],
+      board: getBoard(_, _, _, X, _, _, _, _, _),
       ended: false,
       started: true,
       lastMove: 3,
@@ -73,7 +70,7 @@ describe('move', () => {
 
   it('return game and clean lastMove when invalid position', () => {
     const oldGame = {
-      board: [0, 0, 0, xValue, 0, 0, 0, 0, 0],
+      board: getBoard(_, _, _, X, _, _, _, _, _),
       ended: false,
       started: true,
       lastMove: 3,
@@ -93,7 +90,7 @@ describe('move', () => {
 
   it('set ended and winners when someone wins', () => {
     const oldGame = {
-      board: [oValue, oValue, 0, xValue, xValue, 0, 0, 0, 0],
+      board: getBoard(O, O, _, X, X, _, _, _, _),
       ended: false,
       started: true,
       lastMove: 1,
@@ -109,7 +106,7 @@ describe('move', () => {
     const index = 5;
 
     const expected = {
-      board: [oValue, oValue, 0, xValue, xValue, xValue, 0, 0, 0],
+      board: getBoard(O, O, _, X, X, X, _, _, _),
       ended: true,
       started: true,
       lastMove: 5,
@@ -129,7 +126,7 @@ describe('move', () => {
 
   it('set ended when nobody wins', () => {
     const oldGame = {
-      board: [oValue, xValue, oValue, xValue, oValue, xValue, xValue, oValue, 0],
+      board: getBoard(O, X, O, X, O, X, X, O, 0),
       ended: false,
       started: true,
       lastMove: 1,
@@ -145,7 +142,7 @@ describe('move', () => {
     const index = 8;
 
     const expected = {
-      board: [oValue, xValue, oValue, xValue, oValue, xValue, xValue, oValue, xValue],
+      board: getBoard(O, X, O, X, O, X, X, O, X),
       ended: true,
       started: true,
       lastMove: 8,
@@ -165,7 +162,7 @@ describe('move', () => {
 
   it('return null for invalid move', () => {
     const oldGame = {
-      board: [1, -1, 1, -1, -1, 1, 0, 1, -1],
+      board: getBoard(X, O, X, O, O, X, _, X, O),
       ended: false,
       started: true,
       lastMove: 8,

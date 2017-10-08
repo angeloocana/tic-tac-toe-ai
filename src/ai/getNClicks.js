@@ -1,5 +1,6 @@
-import { reduce } from 'ramda';
-import { emptyValue } from './constants';
+import { boardLength } from './constants';
+import getEmptyPositions from './getEmptyPositions';
+import { length } from 'ramda';
 
 /**
  * Get number o clicks / moves
@@ -7,12 +8,7 @@ import { emptyValue } from './constants';
  * @param {[Number]} board board array
  * @return {Number} n clicks
  */
-const getNClicks = reduce((clicks, position) =>
-  position === emptyValue
-    ? clicks
-    : clicks + 1
-  , 0);
+const getNClicks = (board) =>
+  boardLength - length(getEmptyPositions(board));
 
-export {
-  getNClicks
-};
+export default getNClicks;

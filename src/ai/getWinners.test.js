@@ -1,25 +1,23 @@
-import { getWinners } from './getWinners';
-import {
-  initialBoard,
-  xValue,
-  oValue
-} from './constants';
+import getWinners from './getWinners';
+import { X, O, _ } from './constants';
+import getBoard from './getBoard';
 import * as assert from 'ptz-assert';
 
 describe('getWinners', () => {
   it('return null when initial game', () => {
-    const winners = getWinners(initialBoard);
+    const board = getBoard();
+    const winners = getWinners(board);
     assert.notOk(winners);
   });
 
   it('return null when nobody wins', () => {
-    const board = [xValue, oValue, xValue, oValue, xValue, oValue, oValue, xValue, oValue];
+    const board = getBoard(X, O, X, O, X, O, O, X, O);
     const winners = getWinners(board);
     assert.notOk(winners);
   });
 
   it('return [0, 1, 2]', () => {
-    const board = [xValue, xValue, xValue, oValue, oValue, 0, 0, 0, 0];
+    const board = getBoard(X, X, X, O, O, _, _, _, _);
     const expected = [0, 1, 2];
     const winners = getWinners(board);
 
@@ -27,7 +25,7 @@ describe('getWinners', () => {
   });
 
   it('return [3, 4, 5', () => {
-    const board = [oValue, oValue, 0, xValue, xValue, xValue, 0, 0, 0];
+    const board = getBoard(O, O, _, X, X, X, _, _, _);
     const expected = [3, 4, 5];
     const winners = getWinners(board);
 
@@ -35,7 +33,7 @@ describe('getWinners', () => {
   });
 
   it('return [6, 7, 8', () => {
-    const board = [oValue, oValue, 0, 0, 0, 0, xValue, xValue, xValue];
+    const board = getBoard(O, O, _, _, _, _, X, X, X);
     const expected = [6, 7, 8];
     const winners = getWinners(board);
 
@@ -43,7 +41,7 @@ describe('getWinners', () => {
   });
 
   it('return [0, 3, 6', () => {
-    const board = [oValue, xValue, 0, oValue, xValue, xValue, oValue, 0, 0];
+    const board = getBoard(O, X, _, O, X, X, O, _, _);
     const expected = [0, 3, 6];
     const winners = getWinners(board);
 
@@ -51,7 +49,7 @@ describe('getWinners', () => {
   });
 
   it('return [1, 4, 7', () => {
-    const board = [xValue, oValue, xValue, xValue, oValue, 0, 0, oValue, 0];
+    const board = getBoard(X, O, X, X, O, _, _, O, _);
     const expected = [1, 4, 7];
     const winners = getWinners(board);
 
@@ -59,7 +57,7 @@ describe('getWinners', () => {
   });
 
   it('return [2, 5, 8', () => {
-    const board = [0, xValue, oValue, xValue, 0, oValue, 0, xValue, oValue];
+    const board = getBoard(_, X, O, X, _, O, _, X, O);
     const expected = [2, 5, 8];
     const winners = getWinners(board);
 
@@ -67,7 +65,7 @@ describe('getWinners', () => {
   });
 
   it('return [0, 4, 8', () => {
-    const board = [oValue, xValue, 0, xValue, oValue, 0, xValue, 0, oValue];
+    const board = getBoard(O, X, _, X, O, _, X, _, O);
     const expected = [0, 4, 8];
     const winners = getWinners(board);
 
@@ -75,7 +73,7 @@ describe('getWinners', () => {
   });
 
   it('return [2, 4, 6]', () => {
-    const board = [0, oValue, xValue, oValue, xValue, 0, xValue, 0, 0];
+    const board = getBoard(_, O, X, O, X, _, X, _, _);
     const expected = [2, 4, 6];
     const winners = getWinners(board);
 

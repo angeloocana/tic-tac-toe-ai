@@ -1,18 +1,8 @@
-import { getNewValue } from './getNewValue';
-import { getNClicks } from './getNClicks';
-import { getWinners } from './getWinners';
+import setPosition from './setPosition';
+import getNewValue from './getNewValue';
+import getNClicks from './getNClicks';
+import getWinners from './getWinners';
 import { isNil } from 'ramda';
-
-const getBoardAfterMove = (oldBoard, index, value) => {
-  if (oldBoard[index] !== 0) {
-    return null;
-  }
-
-  return oldBoard.map((position, i) =>
-    i === index
-      ? value
-      : position);
-};
 
 const getScore = (oldScore, winners, isMyTurn) => {
   if (winners) {
@@ -23,6 +13,12 @@ const getScore = (oldScore, winners, isMyTurn) => {
   }
 };
 
+/**
+ * Move
+ * @param {*} oldGame game
+ * @param {Number} index position
+ * @return {*} new game
+ */
 const move = (oldGame, index) => {
   if (oldGame.ended) {
     return oldGame;
@@ -32,7 +28,7 @@ const move = (oldGame, index) => {
 
   const newValue = getNewValue(nClicks);
 
-  const newBoard = getBoardAfterMove(oldGame.board, index, newValue);
+  const newBoard = setPosition(oldGame.board, index, newValue);
 
   if (isNil(newBoard)) {
     return null;
@@ -61,6 +57,4 @@ const move = (oldGame, index) => {
   };
 };
 
-export {
-  move
-};
+export default move;

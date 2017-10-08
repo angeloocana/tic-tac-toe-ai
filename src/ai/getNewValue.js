@@ -1,4 +1,4 @@
-import { xValue, oValue } from './constants';
+import { X, O } from './constants';
 
 /**
  * get new player value
@@ -7,9 +7,7 @@ import { xValue, oValue } from './constants';
  */
 const getNewValue = (nClicks) =>
   nClicks % 2
-    ? oValue
-    : xValue;
+    ? O
+    : X;
 
-export {
-  getNewValue
-};
+export default getNewValue;

@@ -1,5 +1,5 @@
 import store from '../store';
-import { getInitialGame } from '../../ai';
+import getInitialGame from '../../ai/getInitialGame';
 import { askAiMove } from '../actions';
 
 const aiStart = (oldGame) => {
@@ -7,6 +7,4 @@ const aiStart = (oldGame) => {
   return getInitialGame(oldGame);
 };
 
-export {
-  aiStart
-};
+export default aiStart;

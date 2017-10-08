@@ -5,6 +5,4 @@ const getPositionIndex = (aiOutput) => {
       : bestIndex, 0);
 };
 
-export {
-  getPositionIndex
-};
+export default getPositionIndex;

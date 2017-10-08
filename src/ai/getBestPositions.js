@@ -1,5 +1,5 @@
-import { getEmptyPositions } from './getEmptyPositions';
-import { move } from './move';
+import getEmptyPositions from './getEmptyPositions';
+import move from './move';
 import { filter, head, pipe } from 'ramda';
 
 /**
@@ -45,6 +45,4 @@ const getBestPositions = (oldGame) => {
     : emptyPositions;
 };
 
-export {
-  getBestPositions
-};
+export default getBestPositions;

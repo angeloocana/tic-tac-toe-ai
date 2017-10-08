@@ -1,5 +1,5 @@
 import * as assert from 'ptz-assert';
-import { getPositionIndex } from './getPositionIndex';
+import getPositionIndex from './getPositionIndex';
 
 describe('tic tac toe getPositionIndex', () => {
   it('returns the highest value index', () => {

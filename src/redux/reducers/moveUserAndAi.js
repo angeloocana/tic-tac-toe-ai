@@ -1,10 +1,6 @@
 import store from '../store';
-import { move } from '../../ai';
-import {
-  askAiMove,
-  newGame
-} from '../actions';
-
+import move from '../../ai/move';
+import { askAiMove, newGame } from '../actions';
 import { isNil } from 'ramda';
 
 /**
@@ -43,6 +39,4 @@ const moveUserAndAi = (oldGame, position) => {
   return gameAfterMove;
 };
 
-export {
-  moveUserAndAi
-};
+export default moveUserAndAi;
