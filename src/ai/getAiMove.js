@@ -4,6 +4,8 @@ import getPositionIndex from './getPositionIndex';
 import move from './move';
 import { any, isNil } from 'ramda';
 import { getRandomItem } from 'ptz-math';
+import getInputLayer from './getInputLayer';
+import getBoardArray from './getBoardArray';
 
 const net = getNetwork();
 
@@ -12,6 +14,17 @@ const learningRates = {
   validMove: 0.6,
   win: 1,
   lost: 0
+};
+
+/**
+ * Propagate learning rate and right move to neural network
+ * @param {*} net neural network with 9 output neurons
+ * @param {*} learningRate learning rate
+ * @param {*} game game to get the board from
+ * @return {void}
+ */
+const propagate = (net, learningRate, game) => {
+  net.propagate(learningRate, getBoardArray(game.board));
 };
 
 /**
@@ -24,14 +37,14 @@ const getAiMove = (oldGame) => {
     return oldGame;
   }
 
-  const output = net.activate([oldGame.board]);
+  const output = net.activate(getInputLayer(oldGame.board));
 
   const index = getPositionIndex(output);
 
   const newGame = move(oldGame, index);
 
   if (newGame && newGame.ended) {
-    net.propagate(learningRates.win, newGame.board);
+    propagate(net, learningRates.win, newGame);
     return index;
 
   } else {
@@ -39,13 +52,13 @@ const getAiMove = (oldGame) => {
     const bestPositions = getBestPositions(oldGame);
 
     if (any(p => index === p, bestPositions)) {
-      net.propagate(learningRates.validMove, newGame.board);
+      propagate(net, learningRates.validMove, newGame);
       return index;
 
-    } else {      
+    } else {
       const bestPosition = getRandomItem(bestPositions);
       const gameAfterBestMove = move(oldGame, bestPosition);
-      net.propagate(learningRates.invalidMove, gameAfterBestMove.board);
+      propagate(net, learningRates.invalidMove, gameAfterBestMove);
 
       return bestPosition;
     }
