@@ -23,15 +23,15 @@ const positionsToCheck = [
 const getWinners = (board) => {
   const get = getPosition(board);
 
-  return head(
-    filter((positions) => {
-      const p0 = get(positions[0]);
-      const p1 = get(positions[1]);
-      const p2 = get(positions[2]);
+  const winners = filter((positions) => {
+    const p0 = get(positions[0]);
+    const p1 = get(positions[1]);
+    const p2 = get(positions[2]);
 
-      return p0 !== emptyValue && p0 === p1 && p1 === p2;
-    }, positionsToCheck)
-  ) || null;
+    return p0 !== emptyValue && p0 === p1 && p1 === p2;
+  }, positionsToCheck);
+
+  return head(winners) || null;
 };
 
 export default getWinners;
