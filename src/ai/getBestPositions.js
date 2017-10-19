@@ -16,8 +16,27 @@ const getOther = (item, list) => pipe(
   head
 )(list);
 
+
+const getWinPositions = (oldGame, emptyPositions) => {
+  return emptyPositions.filter(position => {
+    const testGame = move(oldGame, position);
+    return testGame.ended;
+  });
+};
+
+const getLosePositions = (oldGame, emptyPositions) => {
+  return emptyPositions.filter(position => {
+    const testGame = move(oldGame, getOther(position, emptyPositions));
+    const testGame2 = move(testGame, position);
+    return testGame2.ended;
+  });
+};
+
 /**
  * Get Win Positions or Empty Positions
+ * 
+ * Strategy: https://en.wikipedia.org/wiki/Tic-tac-toe#Strategy
+ * 
  * @func
  * @param {[Number]} oldGame old game
  * @return {Number} random empty position
@@ -25,24 +44,31 @@ const getOther = (item, list) => pipe(
 const getBestPositions = (oldGame) => {
   const emptyPositions = getEmptyPositions(oldGame.board);
 
-  const winPositions = emptyPositions.filter(position => {
-    const testGame = move(oldGame, position);
-    return testGame.ended;
-  });
-
+  // 1º Win
+  const winPositions = getWinPositions(oldGame, emptyPositions);
   if (winPositions.length > 0) {
     return winPositions;
   }
 
-  const losePositions = emptyPositions.filter(position => {
-    const testGame = move(oldGame, getOther(position, emptyPositions));
-    const testGame2 = move(testGame, position);
-    return testGame2.ended;
-  });
+  // 2º Block
+  const losePositions = getLosePositions(oldGame, emptyPositions);
+  if (losePositions.length > 0) {
+    return losePositions;
+  }
 
-  return losePositions.length > 0
-    ? losePositions
-    : emptyPositions;
+  // 3º Fork
+
+  // 4º Blocking an opponent's fork
+
+  // 5º Center 
+
+  // 6º Opposite corner
+
+  // 7º Empty corner
+
+  // 8º Empty side
+
+  return emptyPositions;
 };
 
 export default getBestPositions;
