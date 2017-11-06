@@ -18,7 +18,7 @@ describe('addDelay', () => {
 
     const delay = 3;
 
-    const lines = addDelay(delay)(linesBefore);
+    const lines = addDelay(delay, linesBefore);
 
     assert.deepEqual(lines, expectedLines);
   });

@@ -1,4 +1,4 @@
-import { range } from 'ramda';
+import { range, concat, map } from 'ramda';
 
 /**
  * Get list of nulls
@@ -6,14 +6,15 @@ import { range } from 'ramda';
  * @param {Number} nFrames number of frames
  * @return {[null]} array of nulls
  */
-const getNulls = (nFrames) => range(0, nFrames).map(_ => null);
+const getNulls = (nFrames) => map(_ => null, range(0, nFrames));
 
 /**
  * Add nFrames delay to the end of each line
  * @sig Number -> [a] -> [a]
- * @param {*} nFrames number of frames
- * @return {Function} concat lineChunks and range of nulls
+ * @param {Number} nFrames number of frames
+ * @param {[*]} frames list of frames
+ * @return {[*]} list of frames + delay (nulls)
  */
-const addDelay = (nFrames) => lines => lines.concat(getNulls(nFrames));
+const addDelay = (nFrames, frames) => concat(frames || [], getNulls(nFrames));
 
 export default addDelay;

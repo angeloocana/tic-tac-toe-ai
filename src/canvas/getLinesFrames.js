@@ -1,6 +1,6 @@
 import addDelay from './addDelay';
 import getLineFrames from './getLineFrames';
-import { unnest, pipe, map } from 'ramda';
+import { unnest, pipe, map, partial } from 'ramda';
 
 /**
  * get lines chunks and delay to draw by frame
@@ -9,7 +9,7 @@ import { unnest, pipe, map } from 'ramda';
  */
 const getLinesFrames = (theme) => pipe(
   map(getLineFrames(theme.percentageByFrame)),
-  map(addDelay(theme.delayAfterEachLine)),
+  map(partial(addDelay(theme.delayAfterEachLine))),
   unnest
 );
 
