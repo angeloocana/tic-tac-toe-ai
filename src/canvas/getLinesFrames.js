@@ -8,7 +8,7 @@ import { unnest, pipe, map, partial } from 'ramda';
  * @return {Function} (size) => [[Number]] line chunks
  */
 const getLinesFrames = (theme) => pipe(
-  map(getLineFrames(theme.percentageByFrame)),
+  map(partial(getLineFrames, [theme.percentageByFrame])),
   map(partial(addDelay, [theme.delayAfterEachLine])),
   unnest
 );
