@@ -1,4 +1,4 @@
-import { memoize } from 'ramda';
+import { memoize, partial } from 'ramda';
 import getLineMidPoint from './getLineMidPoint';
 
 /**
@@ -10,19 +10,19 @@ import getLineMidPoint from './getLineMidPoint';
 const getXFor00 = memoize((clientWidth, clientHeight) => {
   const columnWidth = clientWidth / 3;
   const size = {
-    init: 0.2,
-    end: 0.8
+    init: 20, // 20%
+    end: 80 // 80%
   };
 
-  const getLine1 = getLineMidPoint(
-    [0, 0], // from \
-    [columnWidth, columnWidth] // to \
-  );
+  const getLine1 = partial(getLineMidPoint, [
+    [0, 0], // from
+    [columnWidth, columnWidth] // to
+  ]);
 
-  const getLine2 = getLineMidPoint(
-    [0, columnWidth], // from /
-    [columnWidth, 0] // to /
-  );
+  const getLine2 = partial(getLineMidPoint, [
+    [0, columnWidth], // from
+    [columnWidth, 0] // to
+  ]);
 
   return [
     [

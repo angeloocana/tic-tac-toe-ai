@@ -1,7 +1,13 @@
 import getLineMidPoint from './getLineMidPoint';
-import addFrame from './addFrame';
+import createFrame from './createFrame';
+import getPercentages from './getPercentages';
+import getFromToForPoints from './getFromToForPoints';
+import { head, pipe, map, partial } from 'ramda';
 
-const addLineFrame = addFrame('line');
+const createLineFrame = partial(createFrame, ['line']);
+
+const getPoints = (line) => (percentages) =>
+  map(partial(getLineMidPoint, [head(line), line[1]]), percentages);
 
 /**
  * Split line into small lines to draw by frame
@@ -10,30 +16,11 @@ const addLineFrame = addFrame('line');
  * @param {[[Number]]} line [[x,y],[x,y]]
  * @return {[[[Number]]]} line chunks
  */
-const getLineFrames = (percentageByFrame, line) => {
-  let frames = [];
-  let previousPoint = line[0];
-
-  const getMidPoint = getLineMidPoint(line[0], line[1]);
-
-  for (var i = percentageByFrame; i < 100; i += percentageByFrame) {
-    const midLine = [
-      previousPoint,
-      getMidPoint(i / 100)
-    ];
-    frames = addLineFrame(frames, midLine);
-
-    previousPoint = midLine[1];
-  }
-
-  const lastLine = [
-    previousPoint,
-    line[1]
-  ];
-
-  frames = addLineFrame(frames, lastLine);
-
-  return frames;
-};
+const getLineFrames = (percentageByFrame, line) => pipe(
+  getPercentages,
+  getPoints(line),
+  getFromToForPoints,
+  map(createLineFrame)
+)(percentageByFrame);
 
 export default getLineFrames;

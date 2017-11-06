@@ -1,5 +1,5 @@
-import { memoize } from 'ramda';
-import addFrame from './addFrame';
+import { concat, memoize, partial } from 'ramda';
+import createFrame from './createFrame';
 
 const arcEndAngle = 2 * Math.PI;
 
@@ -11,7 +11,7 @@ const arcEndAngle = 2 * Math.PI;
  */
 const getArcPercentAngle = memoize((percent) => (percent * arcEndAngle) / 100);
 
-const addArcFrame = addFrame('arc');
+const createArcFrame = partial(createFrame, ['arc']);
 
 /**
  * get lines chunks and delay to draw by frame
@@ -32,7 +32,7 @@ const getArcFrames = memoize((percentageByFrame, arc) => {
       getArcPercentAngle(i) // The ending angle, in radians
     ];
 
-    frames = addArcFrame(frames, midArc);
+    frames = concat(frames, [createArcFrame(midArc)]);
 
     sAngle = midArc[4];
   }
@@ -45,7 +45,7 @@ const getArcFrames = memoize((percentageByFrame, arc) => {
     arcEndAngle // The ending angle, in radians
   ];
 
-  frames = addArcFrame(frames, lastMidArc);
+  frames = concat(frames, [createArcFrame(lastMidArc)]);
 
   return frames;
 });
