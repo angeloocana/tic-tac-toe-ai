@@ -31,7 +31,7 @@ const learningRates = {
  * @return {void}
  */
 const propagate = (net, learningRate, game) =>
-  net.propagate(learningRate, getBoardArray(game.board));
+  net.propagate(learningRate, getBoardArray(game));
 
 /**
  * Get ai move index position

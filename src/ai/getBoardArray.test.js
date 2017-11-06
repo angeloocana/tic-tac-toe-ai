@@ -19,4 +19,14 @@ describe('getBoardArray', () => {
 
     assert.deepEqual(input, expected);
   });
+
+  it('get from Game', () => {
+    const game = {
+      board: getBoard(X, _, O)
+    };
+    const expected = [X, _, O, _, _, _, _, _, _];
+    const input = getBoardArray(game);
+
+    assert.deepEqual(input, expected);
+  });
 });
