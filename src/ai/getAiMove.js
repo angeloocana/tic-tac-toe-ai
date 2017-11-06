@@ -7,8 +7,14 @@ import { getRandomItem } from 'ptz-math';
 import getInputLayer from './getInputLayer';
 import getBoardArray from './getBoardArray';
 
+/**
+ * Neural Network
+ */
 const net = getNetwork();
 
+/**
+ * TODO: Find the best learning rates
+ */
 const learningRates = {
   invalidMove: 0.1,
   validMove: 0.6,
@@ -17,19 +23,20 @@ const learningRates = {
 };
 
 /**
- * Propagate learning rate and right move to neural network
- * @param {*} net neural network with 9 output neurons
- * @param {*} learningRate learning rate
- * @param {*} game game to get the board from
+ * Propagate neural network with learning rate and right move
+ * @sig Net -> Number -> Game -> void
+ * @param {Net} net neural network with 9 output neurons
+ * @param {Number} learningRate learning rate
+ * @param {Game} game game to get the board from
  * @return {void}
  */
-const propagate = (net, learningRate, game) => {
+const propagate = (net, learningRate, game) =>
   net.propagate(learningRate, getBoardArray(game.board));
-};
 
 /**
  * Get ai move index position
- * @param {*} oldGame game
+ * @sig Game -> Number
+ * @param {Game} oldGame game
  * @return {Number} position index
  */
 const getAiMove = (oldGame) => {
