@@ -9,7 +9,7 @@ import { unnest, pipe, map, partial } from 'ramda';
  */
 const getLinesFrames = (theme) => pipe(
   map(getLineFrames(theme.percentageByFrame)),
-  map(partial(addDelay(theme.delayAfterEachLine))),
+  map(partial(addDelay, [theme.delayAfterEachLine])),
   unnest
 );
 
