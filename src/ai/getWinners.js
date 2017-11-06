@@ -1,4 +1,4 @@
-import { filter, head } from 'ramda';
+import { filter, head, partial } from 'ramda';
 import { emptyValue } from './constants';
 import getPosition from './getPosition';
 
@@ -21,7 +21,7 @@ const positionsToCheck = [
  * @return {[Number]} winners
  */
 const getWinners = (board) => {
-  const get = getPosition(board);
+  const get = partial(getPosition, [board]);
 
   const winners = filter((positions) => {
     const p0 = get(positions[0]);
