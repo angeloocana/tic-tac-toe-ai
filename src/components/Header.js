@@ -55,11 +55,12 @@ const Header = ({ menu, isHome, langs, homeLink, url, intl }) => {
   const title = intl.formatMessage({ id: 'title' });
   const description = intl.formatMessage({ id: 'header.subTitle' });
 
+  const titleTemplate = `%s | ${title}`;
   return (
     <Wrapper isHome={isHome}>
       <Helmet
         defaultTitle={title}
-        titleTemplate={`%s | ${title}`}
+        titleTemplate={titleTemplate}
       >
         <meta property="og:url" content={host + url} />
         <meta property="og:type" content="game" />
