@@ -2,7 +2,7 @@ import getLineMidPoint from './getLineMidPoint';
 import createFrame from './createFrame';
 import getPercentages from './getPercentages';
 import getFromToForPoints from './getFromToForPoints';
-import { head, pipe, map, partial } from 'ramda';
+import { head, pipe, map, memoize, partial } from 'ramda';
 
 const createLineFrame = partial(createFrame, ['line']);
 
@@ -16,11 +16,12 @@ const getPoints = (line) => (percentages) =>
  * @param {[[Number]]} line [[x,y],[x,y]]
  * @return {[[[Number]]]} line chunks
  */
-const getLineFrames = (percentageByFrame, line) => pipe(
-  getPercentages,
-  getPoints(line),
-  getFromToForPoints,
-  map(createLineFrame)
-)(percentageByFrame);
+const getLineFrames = memoize((percentageByFrame, line) => 
+  pipe(
+    getPercentages,
+    getPoints(line),
+    getFromToForPoints,
+    map(createLineFrame)
+  )(percentageByFrame));
 
 export default getLineFrames;
