@@ -5,77 +5,77 @@ import * as assert from 'ptz-assert';
 
 describe('getWinners', () => {
   it('return null when initial game', () => {
-    const board = getBoard();
-    const winners = getWinners(board);
+    const board = getBoard().merge();
+    const winners = getWinners(board).merge();
     assert.notOk(winners);
   });
 
   it('return null when nobody wins', () => {
-    const board = getBoard(X, O, X, O, X, O, O, X, O);
-    const winners = getWinners(board);
+    const board = getBoard(X, O, X, O, X, O, O, X, O).merge();
+    const winners = getWinners(board).merge();
     assert.notOk(winners);
   });
 
   it('return [0, 1, 2]', () => {
-    const board = getBoard(X, X, X, O, O, _, _, _, _);
+    const board = getBoard(X, X, X, O, O, _, _, _, _).merge();
     const expected = [0, 1, 2];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });
 
-  it('return [3, 4, 5', () => {
-    const board = getBoard(O, O, _, X, X, X, _, _, _);
+  it('return [3, 4, 5]', () => {
+    const board = getBoard(O, O, _, X, X, X, _, _, _).merge();
     const expected = [3, 4, 5];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });
 
-  it('return [6, 7, 8', () => {
-    const board = getBoard(O, O, _, _, _, _, X, X, X);
+  it('return [6, 7, 8]', () => {
+    const board = getBoard(O, O, _, _, _, _, X, X, X).merge();
     const expected = [6, 7, 8];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });
 
-  it('return [0, 3, 6', () => {
-    const board = getBoard(O, X, _, O, X, X, O, _, _);
+  it('return [0, 3, 6]', () => {
+    const board = getBoard(O, X, _, O, X, X, O, _, _).merge();
     const expected = [0, 3, 6];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });
 
-  it('return [1, 4, 7', () => {
-    const board = getBoard(X, O, X, X, O, _, _, O, _);
+  it('return [1, 4, 7]', () => {
+    const board = getBoard(X, O, X, X, O, _, _, O, _).merge();
     const expected = [1, 4, 7];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });
 
-  it('return [2, 5, 8', () => {
-    const board = getBoard(_, X, O, X, _, O, _, X, O);
+  it('return [2, 5, 8]', () => {
+    const board = getBoard(_, X, O, X, _, O, _, X, O).merge();
     const expected = [2, 5, 8];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });
 
-  it('return [0, 4, 8', () => {
-    const board = getBoard(O, X, _, X, O, _, X, _, O);
+  it('return [0, 4, 8]', () => {
+    const board = getBoard(O, X, _, X, O, _, X, _, O).merge();
     const expected = [0, 4, 8];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });
 
   it('return [2, 4, 6]', () => {
-    const board = getBoard(_, O, X, O, X, _, X, _, _);
+    const board = getBoard(_, O, X, O, X, _, X, _, _).merge();
     const expected = [2, 4, 6];
-    const winners = getWinners(board);
+    const winners = getWinners(board).merge();
 
     assert.deepEqual(winners, expected);
   });

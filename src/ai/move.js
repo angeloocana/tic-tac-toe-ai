@@ -2,7 +2,8 @@ import setPosition from './setPosition';
 import getNewValue from './getNewValue';
 import getNClicks from './getNClicks';
 import getWinners from './getWinners';
-import { isNil } from 'ramda';
+import { curry } from 'ramda';
+import Result from 'folktale/result';
 
 const getScore = (oldScore, winners, isMyTurn) => {
   if (winners) {
@@ -15,46 +16,45 @@ const getScore = (oldScore, winners, isMyTurn) => {
 
 /**
  * Move
- * @param {*} oldGame game
+ * @sig Game -> Number -> Result Game
  * @param {Number} index position
- * @return {*} new game
+ * @param {Game} oldGame game
+ * @return {Result<Game>} new game
  */
-const move = (oldGame, index) => {
+const move = curry((oldGame, index) => {
   if (oldGame.ended) {
-    return oldGame;
+    return Result.Error('Game ended');
   }
 
   const nClicks = getNClicks(oldGame.board);
 
   const newValue = getNewValue(nClicks);
 
-  const newBoard = setPosition(oldGame.board, index, newValue);
+  return setPosition(newValue, index, oldGame.board).map(newBoard => {
+    const winners = getWinners(newBoard).merge();
 
-  if (isNil(newBoard)) {
-    return null;
-  }
+    const isNClicksOdd = nClicks % 2 === 0;
 
-  const winners = getWinners(newBoard);
+    const ended = winners || nClicks > 7 ? true : false;
 
-  const isNClicksOdd = nClicks % 2 === 0;
+    return {
+      board: newBoard,
+      ended,
+      started: true,
+      lastMove: index,
+      winners,
+      isAiTurn: !oldGame.isAiTurn,
+      aiStarted: oldGame.aiStarted,
+      score: ended
+        ? {
+          ai: getScore(oldGame.score.ai, winners, oldGame.aiStarted ? isNClicksOdd : !isNClicksOdd),
+          human: getScore(oldGame.score.human, winners, oldGame.aiStarted ? !isNClicksOdd : isNClicksOdd)
+        }
+        : oldGame.score
+    };
 
-  const ended = winners || nClicks > 7 ? true : false;
-
-  return {
-    board: newBoard,
-    ended,
-    started: true,
-    lastMove: index,
-    winners,
-    isAiTurn: !oldGame.isAiTurn,
-    aiStarted: oldGame.aiStarted,
-    score: ended
-      ? {
-        ai: getScore(oldGame.score.ai, winners, oldGame.aiStarted ? isNClicksOdd : !isNClicksOdd),
-        human: getScore(oldGame.score.human, winners, oldGame.aiStarted ? !isNClicksOdd : isNClicksOdd)
-      }
-      : oldGame.score
-  };
-};
+  });
+});
 
 export default move;
+

@@ -57,7 +57,7 @@ class Game extends React.PureComponent {
 
   render() {
     const { game, selectPosition } = this.props;
-
+    console.log('game:', game);
     return (
       <Section>
         <Score>

@@ -6,6 +6,7 @@ import { any, isNil } from 'ramda';
 import { getRandomItem } from 'ptz-math';
 import getInputLayer from './getInputLayer';
 import getBoardArray from './getBoardArray';
+import Result from 'folktale/result';
 
 /**
  * Neural Network
@@ -41,35 +42,38 @@ const propagate = (net, learningRate, game) =>
  */
 const getAiMove = (oldGame) => {
   if (isNil(oldGame)) {
-    return oldGame;
+    return Result.Error('Null Game');
   }
 
   const output = net.activate(getInputLayer(oldGame.board));
 
   const index = getPositionIndex(output);
 
-  const newGame = move(oldGame, index);
+  return move(oldGame, index).map(newGame => {
 
-  if (newGame && newGame.ended) {
-    propagate(net, learningRates.win, newGame);
-    return index;
-
-  } else {
-
-    const bestPositions = getBestPositions(oldGame);
-
-    if (any(p => index === p, bestPositions)) {
-      propagate(net, learningRates.validMove, newGame);
+    if (newGame && newGame.ended) {
+      propagate(net, learningRates.win, newGame);
       return index;
 
     } else {
-      const bestPosition = getRandomItem(bestPositions);
-      const gameAfterBestMove = move(oldGame, bestPosition);
-      propagate(net, learningRates.invalidMove, gameAfterBestMove);
 
-      return bestPosition;
+      const bestPositions = getBestPositions(oldGame);
+
+      if (any(p => index === p, bestPositions)) {
+        propagate(net, learningRates.validMove, newGame);
+        return index;
+
+      } else {
+        const bestPosition = getRandomItem(bestPositions);
+        
+        move(oldGame, bestPosition)
+          .map(gameAfterBestMove => propagate(net, learningRates.invalidMove, gameAfterBestMove));
+
+        return bestPosition;
+      }
     }
-  }
+  });
 };
 
 export default getAiMove;
+

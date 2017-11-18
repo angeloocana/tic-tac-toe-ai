@@ -1,6 +1,6 @@
 import getEmptyPositions from './getEmptyPositions';
 import move from './move';
-import { filter, head, pipe } from 'ramda';
+import { filter, head, pipe, prop } from 'ramda';
 
 /**
  * Get another item from the list
@@ -18,18 +18,20 @@ const getOther = (item, list) => pipe(
 
 
 const getWinPositions = (oldGame, emptyPositions) => {
-  return emptyPositions.filter(position => {
-    const testGame = move(oldGame, position);
-    return testGame.ended;
-  });
+  return emptyPositions.filter(position => 
+    move(oldGame, position)
+      .map(prop('ended'))
+      .getOrElse(false)
+  );
 };
 
 const getLosePositions = (oldGame, emptyPositions) => {
-  return emptyPositions.filter(position => {
-    const testGame = move(oldGame, getOther(position, emptyPositions));
-    const testGame2 = move(testGame, position);
-    return testGame2.ended;
-  });
+  return emptyPositions.filter(position =>
+    move(oldGame, getOther(position, emptyPositions))
+      .map(move(position))
+      .map(prop('ended'))
+      .getOrElse(false)
+  );
 };
 
 /**

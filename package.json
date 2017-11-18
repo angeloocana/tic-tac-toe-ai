@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Angelo Ocana <angeloocana@gmail.com>",
   "dependencies": {
+    "folktale": "^2.0.1",
     "gatsby": "^1.9.55",
     "gatsby-link": "^1.6.20",
     "gatsby-plugin-react-helmet": "^1.0.1",

@@ -1,4 +1,4 @@
-import { map, partial, flatten } from 'ramda';
+import { pipe, map, flatten } from 'ramda';
 import { boardIndexes, X, O } from './constants';
 import getPosition from './getPosition';
 import getBoardFromGame from './getBoardFromGame';
@@ -8,14 +8,12 @@ import getBoardFromGame from './getBoardFromGame';
  * - X: [1, 0]
  * - O: [0, 1]
  * - _: [0, 0]
- * @sig Number -> (Number -> [Number])
- * @param {Number} board Game board
- * @param {Number} index board index
+ * @sig Number -> [Number]
+ * @param {Number} value Position value
  * @return {[Number]} neuron's input
  */
-const getPositionInput = (board, index) => {
-  const position = getPosition(board, index);
-  switch (position) {
+const getPositionInput = value => { 
+  switch (value) {
     case X: return [1, 0];
     case O: return [0, 1];
     default: return [0, 0];
@@ -28,10 +26,11 @@ const getPositionInput = (board, index) => {
  * @param {Number | Game} boardOrGame Board or Game
  * @return {[Number]} Neural Network input layer
  */
-const getInputLayer = boardOrGame => {
-  const board = getBoardFromGame(boardOrGame);
-  const getInput = partial(getPositionInput, [board]);
-  return flatten(map(getInput, boardIndexes));
-};
+const getInputLayer = pipe(
+  getBoardFromGame,
+  map(board => map(index => getPositionInput(getPosition(index, board).merge()), boardIndexes)),
+  map(flatten),
+);
 
 export default getInputLayer;
+

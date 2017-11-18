@@ -2,6 +2,7 @@ import { X, O } from './constants';
 
 /**
  * get new player value
+ * @sig Number -> Number
  * @param {Number} nClicks number of previous clicks / moves
  * @return {Number} X or O value
  */
@@ -11,3 +12,4 @@ const getNewValue = (nClicks) =>
     : X;
 
 export default getNewValue;
+

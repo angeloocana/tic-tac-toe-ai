@@ -1,4 +1,5 @@
 import getXYFromIndex from './getXYFromIndex';
+import { pipe, map } from 'ramda';
 
 /**
  * Calculate bit position for X and Y
@@ -15,10 +16,10 @@ const calculateBitPositionForXY = (x, y) => (x + y * 3) * 2;
  * @param {Number} index position index
  * @return {Number} bit position
  */
-const calculateBitPosition = (index) => {
-  const { x, y } = getXYFromIndex(index);
-  return calculateBitPositionForXY(x, y);
-};
+const calculateBitPosition = pipe(
+  getXYFromIndex,
+  map(({x, y}) => calculateBitPositionForXY(x, y))
+);
 
 export default calculateBitPosition;
 
@@ -26,3 +27,4 @@ export {
   calculateBitPositionForXY,
   calculateBitPosition
 };
+

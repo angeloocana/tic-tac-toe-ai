@@ -3,23 +3,23 @@ import move from './move';
 import getInitialGame from './getInitialGame';
 import getBoard from './getBoard';
 import { X } from './constants';
-import * as assert from 'ptz-assert';
+import { equal, deepEqual } from 'ptz-assert';
 
 describe('moveAi', () => {
-  it('return null when game is null', () => {
+  it('return Result.Error when game is null', () => {
     const oldGame = null;
-    const newGame = moveAi(oldGame, 0);
+    const newGame = moveAi(oldGame, 0).merge();
 
-    assert.equal(newGame, oldGame);
+    equal(newGame, 'Null game');
   });
 
   it('return new game when it is AI turn', () => {
     const oldGame = getInitialGame();
-    const newGame = moveAi(oldGame, 0);
+    const newGame = moveAi(oldGame, 0).merge();
 
     const expectedGame = {
       aiStarted: true,
-      board: getBoard(X),
+      board: getBoard(X).merge(),
       ended: false,
       isAiTurn: false,
       lastMove: 0,
@@ -28,13 +28,14 @@ describe('moveAi', () => {
       winners: null
     };
 
-    assert.deepEqual(newGame, expectedGame);
+    deepEqual(newGame, expectedGame);
   });
 
-  it('return old game when it is NOT AI turn', () => {
-    const oldGame = move(getInitialGame(), 0);
-    const newGame = moveAi(oldGame, 1);
+  it('return it is NOT AI turn', () => {
+    const oldGame = move(getInitialGame(), 0).merge(),
+      newGame = moveAi(oldGame, 1).merge();
 
-    assert.deepEqual(newGame, oldGame);
+    deepEqual(newGame, 'Is NOT AI turn');
   });
 });
+

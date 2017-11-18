@@ -4,10 +4,13 @@ import { filter } from 'ramda';
 
 /**
  * Get all empty positions indexes
- * @param {Number} board board bits
+ * @sig Board -> [Number]
+ * @param {Board} board board bits
  * @return {[Number]} indexes array
  */
-const getEmptyPositions = (board) =>
-  filter(i => isPositionEmpty(board, i), boardIndexes);
+const getEmptyPositions = (board) => 
+  filter(i =>  isPositionEmpty(i, board).getOrElse(false)
+    , boardIndexes);
 
 export default getEmptyPositions;
+

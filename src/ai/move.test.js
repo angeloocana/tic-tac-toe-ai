@@ -1,4 +1,4 @@
-import * as assert from 'ptz-assert';
+import { deepEqual, equal } from 'ptz-assert';
 import move from './move';
 import { _, O, X } from './constants';
 import getInitialGame from './getInitialGame';
@@ -10,7 +10,7 @@ describe('move', () => {
     const index = 3;
 
     const expected = {
-      board: getBoard(_, _, _, X, _, _, _, _, _),
+      board: getBoard(_, _, _, X, _, _, _, _, _).merge(),
       ended: false,
       started: true,
       lastMove: 3,
@@ -23,14 +23,14 @@ describe('move', () => {
       }
     };
 
-    const newGame = move(oldGame, index);
+    const newGame = move(oldGame, index).merge();
 
-    assert.deepEqual(newGame, expected);
+    deepEqual(newGame, expected);
   });
 
   it('if game ended return game', () => {
     const oldGame = {
-      board: getBoard(),
+      board: getBoard().merge(),
       ended: true,
       started: true,
       lastMove: null,
@@ -43,14 +43,14 @@ describe('move', () => {
 
     const index = 0;
 
-    const newGame = move(oldGame, index);
+    const newGame = move(oldGame, index).merge();
 
-    assert.equal(newGame, oldGame);
+    equal(newGame, 'Game ended');
   });
 
-  it('return game and clean lastMove when position not empty', () => {
+  it('return position not empty', () => {
     const oldGame = {
-      board: getBoard(_, _, _, X, _, _, _, _, _),
+      board: getBoard(_, _, _, X, _, _, _, _, _).merge(),
       ended: false,
       started: true,
       lastMove: 3,
@@ -63,14 +63,14 @@ describe('move', () => {
 
     const index = 3;
 
-    const newGame = move(oldGame, index);
+    const newGame = move(oldGame, index).merge();
 
-    assert.notOk(newGame);
+    equal(newGame, 'Position NOT empty');
   });
 
-  it('return game and clean lastMove when invalid position', () => {
+  it('return invalid position', () => {
     const oldGame = {
-      board: getBoard(_, _, _, X, _, _, _, _, _),
+      board: getBoard(_, _, _, X, _, _, _, _, _).merge(),
       ended: false,
       started: true,
       lastMove: 3,
@@ -83,14 +83,14 @@ describe('move', () => {
 
     const index = -1;
 
-    const newGame = move(oldGame, index);
+    const newGame = move(oldGame, index).merge();
 
-    assert.notOk(newGame);
+    equal(newGame, 'Invalid index: -1');
   });
 
   it('set ended and winners when someone wins', () => {
     const oldGame = {
-      board: getBoard(O, O, _, X, X, _, _, _, _),
+      board: getBoard(O, O, _, X, X, _, _, _, _).merge(),
       ended: false,
       started: true,
       lastMove: 1,
@@ -106,7 +106,7 @@ describe('move', () => {
     const index = 5;
 
     const expected = {
-      board: getBoard(O, O, _, X, X, X, _, _, _),
+      board: getBoard(O, O, _, X, X, X, _, _, _).merge(),
       ended: true,
       started: true,
       lastMove: 5,
@@ -119,14 +119,14 @@ describe('move', () => {
       }
     };
 
-    const newGame = move(oldGame, index);
+    const newGame = move(oldGame, index).merge();
 
-    assert.deepEqual(newGame, expected);
+    deepEqual(newGame, expected);
   });
 
   it('set ended when nobody wins', () => {
     const oldGame = {
-      board: getBoard(O, X, O, X, O, X, X, O, 0),
+      board: getBoard(O, X, O, X, O, X, X, O, 0).merge(),
       ended: false,
       started: true,
       lastMove: 1,
@@ -142,7 +142,7 @@ describe('move', () => {
     const index = 8;
 
     const expected = {
-      board: getBoard(O, X, O, X, O, X, X, O, X),
+      board: getBoard(O, X, O, X, O, X, X, O, X).merge(),
       ended: true,
       started: true,
       lastMove: 8,
@@ -155,14 +155,14 @@ describe('move', () => {
       }
     };
 
-    const newGame = move(oldGame, index);
+    const newGame = move(oldGame, index).merge();
 
-    assert.deepEqual(newGame, expected);
+    deepEqual(newGame, expected);
   });
 
-  it('return null for invalid move', () => {
+  it('return invalid move', () => {
     const oldGame = {
-      board: getBoard(X, O, X, O, O, X, _, X, O),
+      board: getBoard(X, O, X, O, O, X, _, X, O).merge(),
       ended: false,
       started: true,
       lastMove: 8,
@@ -177,8 +177,9 @@ describe('move', () => {
 
     const index = 0;
 
-    const newGame = move(oldGame, index);
+    const newGame = move(oldGame, index).merge();
 
-    assert.notOk(newGame);
+    equal(newGame, 'Position NOT empty');
   });
 });
+

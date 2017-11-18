@@ -2,7 +2,7 @@ import getBoard from './getBoard';
 import { merge } from 'ramda';
 
 const initialGame = {
-  board: getBoard(),
+  board: getBoard().getOrElse('Error'),
   ended: false,
   started: false,
   lastMove: null,
